@@ -16,4 +16,10 @@
 5. Market Watch
     + Can use in accordance to https://www.djreprints.com/menu/licensing-republishing/ 
 
-6. 
+6. Tip ranks
+    + 3.18. use our Site or Services for any commercial purpose or in connection with any commercial activity performed, without obtaining our prior written consent; or
+
+7. The Fly
+    + (e) modify, copy or make derivative works based on any part of the Fly.io Services; 
+
+8. 
