@@ -13,13 +13,25 @@
 4. Penny Stocks (Valid)
     + No Disclaimer about usage mentioned in Privacy Policy
 
-5. Market Watch
+5. Market Watch (Valid)
     + Can use in accordance to https://www.djreprints.com/menu/licensing-republishing/ 
 
-6. Tip ranks
+6. Tip ranks (Invalid? )
     + 3.18. use our Site or Services for any commercial purpose or in connection with any commercial activity performed, without obtaining our prior written consent; or
 
-7. The Fly
+7. The Fly (Invalid)
     + (e) modify, copy or make derivative works based on any part of the Fly.io Services; 
 
-8. 
+8. Alliance News (Invalid)
+    + 5.4 violate any copyright, trade mark, other applicable Great Britain or international laws or intellectual property rights of the Website Owner or any other third party;
+
+    + 5.5 submit contents containing marketing or promotional material which is intended to solicit business.
+
+9. Guru Focus (Valid w/ Payment)
+    +  If you want to redistribute any data on GuruFocus website in any format, you need to obtain the proper data license from GuruFocus. Please contact us for price quote if you want to redistribute GuruFocus data.
+
+10. Investor Place (Invalid)
+    + In no event shall you use any Content available through the Services for any other purpose, or provide access to any Service, or copy, disclose, share or redistribute any such Content to any third party for any other use. 
+
+11. FMP (Valid w Permission)
+    + Furthermore, without the prior written approval of Financial Modeling Prep, the Customer may not distribute, publicly perform or display, lease, sell, transmit, transfer, publish, edit, copy, create derivative works from, rent, sub-license, distribute, decompile, disassemble, reverse engineer or otherwise make unauthorized use of the Services.
