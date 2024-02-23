@@ -1,0 +1,10 @@
+get open access datasets -> clean data to only obtain finanical related info -> repeat -> combine data into training sets -> maybe train finGPT on this data 
+
+
+We found some datasets that are open-access
+next we need to clean the datasets and filter out anything that is not related to financial topics
+(cleanning -> maybe NLP processor to pick out finanical terms/text blocks)
+If we run out of datasets, research more (Verifing that they are open-access)
+Create table like BloombergGPT
+- Look at the table and generate the same stats for our datasets
+- Tokenization (breaking down texts into smaller topics/concepts, look this up if confused)
