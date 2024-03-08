@@ -26,7 +26,7 @@ conda create -n sec_filings_edgar python=3.12
 ```
 
 V2. Create a new conda environment using the environment.yml file:
-1. CD into the directory where the environment.yml file is located
+1. CD into the same directory where the environment.yml file is located
 2. Run the following command in your terminal:
 
 ```bash
@@ -46,4 +46,12 @@ If nothing happens when you run the activate command, you may need to run the fo
 conda init
 conda activate sec_filings_edgar
 (sec_filings_edgar) PS C:\Users\TestUser> # Your terminal should look like this
+```
+
+Conda other useful commands:
+
+```bash
+conda env list # List all conda environments
+conda env remove --name sec_filings_edgar # Remove the conda environment
+conda env export > environment.yml # Export the current conda environment to a file
 ```
