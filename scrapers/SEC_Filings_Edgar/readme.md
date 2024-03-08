@@ -37,7 +37,7 @@ Activate/Deactivate the environment using the following command in your terminal
 
 ```bash
 conda activate sec_filings_edgar
-deactivate
+conda deactivate
 ```
 
 If nothing happens when you run the activate command, you may need to run the following command in your terminal:
@@ -55,3 +55,12 @@ conda env list # List all conda environments
 conda env remove --name sec_filings_edgar # Remove the conda environment
 conda env export > environment.yml # Export the current conda environment to a file
 ```
+
+## Edgar Scraping Tips
+### Company CIK Number
+Each entity’s current filing history is available at the following URL:
+(`https://data.sec.gov/submissions/CIK##########.json`)
+
+Where the ########## is the entity’s 10-digit Central Index Key (CIK), including leading zeros.
+
+* You can create a dictionary of CIK numbers and company names to use in your scraping process from the following URL: https://www.sec.gov/files/company_tickers.json
