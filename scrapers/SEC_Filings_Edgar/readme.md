@@ -55,6 +55,12 @@ conda env list # List all conda environments
 conda env remove --name sec_filings_edgar # Remove the conda environment
 conda env export > environment.yml # Export the current conda environment to a file
 ```
+### Using the Environment in VS Code
+```
+1. CTRL + SHIFT + P or Search Bar --> Show and Run Commands
+2. Select Python: Select Interpreter
+3. Select the environment you just created "Python 3.12.2 ('sec_filings_edgar')"
+```
 
 ## Edgar Scraping Tips
 ### Company CIK Number
