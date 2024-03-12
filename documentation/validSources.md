@@ -35,3 +35,21 @@
 
 11. FMP (Valid w Permission)
     + Furthermore, without the prior written approval of Financial Modeling Prep, the Customer may not distribute, publicly perform or display, lease, sell, transmit, transfer, publish, edit, copy, create derivative works from, rent, sub-license, distribute, decompile, disassemble, reverse engineer or otherwise make unauthorized use of the Services.
+
+12. Talk Markets (Invalid)
+    + The content available through TalkMarkets , including, without limitation, software, images, text, graphics, illustrations, logos, patents, trademarks, service marks, copyrights, photographs, audio, videos and music (the "Content"), and all Intellectual Property Rights related thereto, is our property or the property of our licensors and is protected by copyright and other intellectual property laws. You may display or print the Content for your personal, non-commercial use only.  
+
+13. Sina (Invalid)
+    + If Sina Weibo receives a valid notice of copyright infringement, it will promptly remove or disable access to the infringing content. 
+
+14. East Money (Invalid)
+    + All materials or contents contained on this website are protected by the Copyright Law of the People's Republic of China and other relevant laws and regulations, and their copyrights belong to Oriental Fortune or relevant rights holders. No content on this website may be copied, modified, reproduced, disseminated, distributed, reproduced, demonstrated, published or distributed in any other form in any way without the prior written permission of Oriental Fortune or the relevant rights holder.
+
+15. Tushare (Valid)
+    + OSI approved 
+
+16. Finnhub (Valid W Permission)
+    + You hereby agree to not redistribute or share access to data or derived results from the data obtained from Finnhub with anyone or any 3rd party without written approval from Finnhub. All plan listed on Finnhub website is strictly for personal use unless explicitly stated otherwise. Personal plan can’t be used by any business even internally without a written approval.
+
+17. CNBC (Need approval for each source)
+    + You can now licence appearances on CNBC from the network directly allowing you to maximize the impact of your marketing and communications campaigns.
