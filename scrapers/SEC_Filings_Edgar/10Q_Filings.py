@@ -1,5 +1,8 @@
 import pandas as pd
+from bs4 import BeautifulSoup
 import requests
+import re
+
 
 headers = {"User-Agent": "email@address.com"}
 
@@ -27,10 +30,13 @@ allForms = pd.DataFrame.from_dict(filingMetadata.json()["filings"]["recent"])
 
 # Getting the 10-Q filings
 tenQ = allForms[allForms["form"].str.contains("10-Q|10Q")]
-print(tenQ.head())
+
+# Print all of the 10-Q filings
+print(tenQ)
+
+
 # Now we can get the 10-Q filings for Apple Inc.
 # and start analyzing the data
-
 for index, row in tenQ.iterrows():
     accessionNumber = row["accessionNumber"]
     print(accessionNumber)
@@ -39,9 +45,25 @@ for index, row in tenQ.iterrows():
         headers=headers,
     )
     print(filing)
-    print(filing.text)
-    break
 
+    # Parse the HTML of the filing
+    soup = BeautifulSoup(filing.content, "html.parser")
+
+    # Define a regular expression pattern to match the tag name
+    tag_pattern = re.compile(r"^ix:nonfraction$")
+
+    # Find the tags that match the pattern and have the specified attribute
+    shares_tag = soup.find(
+        tag_pattern, attrs={"name": "dei:EntityCommonStockSharesOutstanding"}
+    )
+
+    if shares_tag is not None:
+        num_shares = shares_tag.text.strip()
+        print("Number of shares: ", num_shares)
+    else:
+        print("Shares tag not found")
+
+    break
 # The code above will print the accession number and the response from the filing request
 # The response will be a 200 status code, meaning the request was successful
 # The response will contain the HTML of the filing page
