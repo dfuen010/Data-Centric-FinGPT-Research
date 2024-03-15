@@ -1,17 +1,22 @@
-# Use API https://github.com/HackerNews/API/tree/master
-# Under the MIT License so it's OK to use it.
+"""
+Use API https://github.com/HackerNews/API/tree/master
+https://www.kaggle.com/datasets/hacker-news/hacker-news/data?select=full Public dataset available, but last updated in 2022, last ID: 33620611
+Under the MIT License so it's open source data.
+"""
 import requests
 import pandas as pd
 from multiprocessing.pool import ThreadPool
+import time
+
 
 def get_item(item_id):
     url = f"https://hacker-news.firebaseio.com/v0/item/{item_id}.json?print=pretty"
-    print(requests.get(url).json())
     return requests.get(url).json()
 
 def combine_all_items(starting_id):
-    all_possible_ids = list(range(starting_id, 0, -1))
-    with ThreadPool(16) as pool:
+    last_id = 33620611
+    all_possible_ids = list(range(starting_id, starting_id-100, -1))
+    with ThreadPool(500) as pool:
         all_json_files = pool.map(get_item, all_possible_ids)
         pool.close()
     return all_json_files
@@ -21,5 +26,14 @@ if __name__ == "__main__":
     url_latest_item = "https://hacker-news.firebaseio.com/v0/maxitem.json?print=pretty"
     latest_item = requests.get(url_latest_item).json()
 
+    start = time.time()
+
     # Get all items
     all_json_files = combine_all_items(latest_item)
+    
+    end = time.time()
+    print(end - start)
+    
+    # Convert to dataframe
+    df = pd.DataFrame(all_json_files)
+    df.to_json("hackernews.json", orient="records", lines=True)
