@@ -1,5 +1,6 @@
 import pandas as pd
 import requests
+from bs4 import BeautifulSoup as bs
 
 headers = {'User-Agent': "email@address.com"}
 
@@ -18,7 +19,6 @@ companyData['cik_str'] = companyData['cik_str'].astype(
 
 # example for 1st company
 cik = companyData.iloc[0]['cik_str']
-print(cik)
 
 filingMetadata = requests.get(
     f'https://data.sec.gov/submissions/CIK{cik}.json',
@@ -33,6 +33,17 @@ allForms = pd.DataFrame.from_dict(
              )
 
 # Getting the 10-K filings + variations
-tenK = allForms[allForms['form'].str.contains('10-K|10-KT|10KSB|10KT405|10KSB40|10-K405|10-K/A')]
-print(tenK.head())
+all_10k_forms = allForms[allForms['form'].str.contains('10-K|10-KT|10KSB|10KT405|10KSB40|10-K405|10-K/A')]
+print(all_10k_forms.head())
 
+first_form = all_10k_forms.iloc[0]["primaryDocument"]
+
+accessionNumber = all_10k_forms.iloc[0]["accessionNumber"].replace("-", "")
+
+filing = requests.get(
+    f"https://www.sec.gov/Archives/edgar/data/{cik}/{accessionNumber}/{first_form}",
+    headers=headers
+    )
+
+tables = pd.read_html(filing.text)
+print(tables)
