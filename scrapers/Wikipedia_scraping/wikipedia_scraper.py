@@ -4,9 +4,11 @@ import requests
  
 # get URL
 landing_page = "https://en.wikipedia.org/wiki/Main_Page"
+
+output_file = open("wikipedia_data.txt", "w")
  
 # making a function that attempts to move to other pages of wikipedia to scrape data
-def scrape_page(url):
+def scrape_page(url, file):
     print ("URL: " + url)
     r = requests.get(url)
     soup = BeautifulSoup(r.content, "html.parser")
@@ -17,6 +19,9 @@ def scrape_page(url):
         scrape_page(href)
     else:
         print ("Done")
+    text = soup.find_all("p")
+    file.write(str(text))
+    file.close()
 
 def get_data(soup):
     list(soup.children)
@@ -33,4 +38,4 @@ def get_data(soup):
 
     return soup.find_all('p')[0].get_text()
 
-scrape_page(landing_page)
+scrape_page(landing_page, output_file)
