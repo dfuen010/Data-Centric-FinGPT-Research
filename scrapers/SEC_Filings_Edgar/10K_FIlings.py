@@ -1,6 +1,7 @@
 import pandas as pd
 import requests
 from xbrl import XBRLParser, GAAP, GAAPSerializer, DEISerializer
+from bs4 import BeautifulSoup
 import os
 import sys
 
@@ -45,28 +46,35 @@ def get_filing_form(headers, cik):
 
     return f"https://www.sec.gov/Archives/edgar/data/{cik}/{accession_number}/{first_form}"
     
-def get_xbrl_data(filing_link):
+    
+def extract_page_directory(filing_link):
     # Getting the XBRL data
     filing_data = requests.get(filing_link, headers=headers)
     
-    xbrl_parser = XBRLParser()
-    sys.stdout = open(os.devnull, 'w')
-    xbrl = xbrl_parser.parse(open(filing_data.content))
+    soup = BeautifulSoup(filing_data.text, features="xml")
+    # with open('table_of_contents.txt', 'w', encoding='utf-8') as file:
+    #     file.write(soup.prettify()) 
+   
+    specific_span = soup.find_all('span', style='background-color:rgba(0,0,0,0);color:rgba(0,0,0,1);white-space:pre-wrap;font-weight:normal;font-size:10.0pt;font-family:"Arial", sans-serif;min-width:fit-content;')
 
-    # Now you can access XBRL data elements, such as GAAP and DEI data
-    # For example:
-    gaap_data = xbrl.get_gaap()
-    dei_data = xbrl.get_dei()
+    df = pd.DataFrame(columns=['Item Number', 'Topic', 'Page Number'])
+    
+    for i in range(len(specific_span)):
+        if "Item" in specific_span[i].text:
+            df.loc[len(df)] = [str(specific_span[i].text), None, None]
+        elif specific_span[i].text == "[Reserved]":
+            continue
+        elif (specific_span[i].text).isdigit():
+            df.loc[len(df)-1, 'Page Number'] = specific_span[i].text
+        else:
+            if df.loc[len(df)-1, 'Topic'] is None:
+                df.loc[len(df)-1, 'Topic'] = [specific_span[i].text]
+            else:
+                df.loc[len(df)-1, 'Topic'].append(specific_span[i].text)
+        if specific_span[i].text == "109":
+            break            
 
-    # You can serialize the data if needed
-    gaap_serializer = GAAPSerializer()
-    dei_serializer = DEISerializer()
-
-    gaap_df = gaap_serializer.serialize(gaap_data)
-    dei_df = dei_serializer.serialize(dei_data)
-
-    sys.stdout = sys.__stdout__
-    return gaap_df, dei_df
+    return df
     
 
 if __name__ == "__main__":
@@ -76,4 +84,6 @@ if __name__ == "__main__":
 
     filing_link = get_filing_form(headers, companyData.iloc[0]['cik_str'])
     
-    gaap_df,dei_df = get_xbrl_data(filing_link)
+    df = extract_page_directory(filing_link)
+    
+    df.to_csv('10k_microsoft.csv', index=False)
