@@ -38,7 +38,7 @@ def get_filing_form(headers, cik):
     # Getting the 10-K filings + variations
 
     all_10k_forms = all_forms[all_forms['form'].str.contains('10-K|10-KT|10KSB|10KT405|10KSB40|10-K405|10-K/A')]
-    
+    all_10k_forms.to_csv('10k_microsoft_files.csv', index=False)
     # example for 1st form
     first_form = all_10k_forms.iloc[0]["primaryDocument"]
 
