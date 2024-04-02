@@ -27,10 +27,9 @@ filingMetadata = requests.get(
 
 allForms = pd.DataFrame.from_dict(filingMetadata.json()["filings"]["recent"])
 
-allForms.to_csv("10Q_allForms.csv")
-
 # Getting the 10-Q filings
 tenQ = allForms[allForms["form"].str.contains("10-Q|10Q")]
+tenQ.to_csv("10Q_filings.csv")
 
 # Print all of the 10-Q filings
 #print(tenQ.head())
