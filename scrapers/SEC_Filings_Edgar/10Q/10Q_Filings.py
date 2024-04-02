@@ -27,25 +27,37 @@ filingMetadata = requests.get(
 
 allForms = pd.DataFrame.from_dict(filingMetadata.json()["filings"]["recent"])
 
+allForms.to_csv("10Q_allForms.csv")
+
 # Getting the 10-Q filings
 tenQ = allForms[allForms["form"].str.contains("10-Q|10Q")]
 
 # Print all of the 10-Q filings
-print(tenQ)
+#print(tenQ.head())
 
 doc = tenQ.iloc[0]["primaryDocument"]
-print(doc)
 
-accessionNumber = tenQ.iloc[0]["accessionNumber"]
-accessionNumber = accessionNumber.replace("-", "")
-print(accessionNumber)
+for i in range(0, len(tenQ)):
+    acceptanceDateTime = tenQ.iloc[i]["acceptanceDateTime"]
+    acceptanceYear = acceptanceDateTime[:4]
+    accessionNumber = tenQ.iloc[i]["accessionNumber"]
+    accessionNumber = accessionNumber.replace("-", "")
+    print("Document: ", accessionNumber)
 
-filing = requests.get(
-    f"https://www.sec.gov/Archives/edgar/data/{cik}/{accessionNumber}/{doc}",
-    headers=headers,
-)
+    filing = requests.get(
+        f"https://www.sec.gov/Archives/edgar/data/{cik}/{accessionNumber}/{doc}",
+        headers=headers,
+    )
 
-parsed_filing = BeautifulSoup(filing.text, "lxml")
+    parsed_filing = BeautifulSoup(filing.text, "lxml")
 
-shares_tag = parsed_filing.find("ix:nonfraction", {"unitref": "shares"})
-print(shares_tag.text.strip())
+    all_ix = parsed_filing.find_all("ix:nonfraction")
+
+    shares_tag = parsed_filing.find("ix:nonfraction", attrs={"unitref": "shares"})
+
+    print(
+        "Shares of common stock were issued and outstanding in",
+        acceptanceYear,
+        ": ",
+        shares_tag.text.strip(),
+    )
