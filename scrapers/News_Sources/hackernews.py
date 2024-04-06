@@ -10,13 +10,16 @@ import time
 
 
 def get_item(item_id):
+    headers = {'User-Agent': "email@address.com",
+               'Content-Type': 'application/json',
+               'accept': 'application/json'}
     url = f"https://hacker-news.firebaseio.com/v0/item/{item_id}.json?print=pretty"
-    return requests.get(url).json()
+    return requests.get(url, headers=headers).json()
 
 def combine_all_items(starting_id):
     last_id = 33620611
-    all_possible_ids = list(range(starting_id, starting_id-100, -1))
-    with ThreadPool(500) as pool:
+    all_possible_ids = list(range(starting_id, starting_id-200, -1))
+    with ThreadPool(20) as pool:
         all_json_files = pool.map(get_item, all_possible_ids)
         pool.close()
     return all_json_files
