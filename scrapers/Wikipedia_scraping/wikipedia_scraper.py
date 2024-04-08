@@ -14,6 +14,9 @@ landing_page = "https://en.wikipedia.org/wiki/Main_Page"
 
 # file for writing the text data
 output_file = open("wikipedia_data.txt", "w")
+
+# keep track of a set of web links that have been visited
+visited = set()
  
 # making a function that attempts to move to other pages of wikipedia to scrape data
 # scrapping the current page as well
@@ -24,11 +27,10 @@ def scrape_page(url, file):
     source_url = url[8:]
     # strip to only get base link for moving to other pages
     source_url = source_url[:source_url.index('/')]
-    print(source_url)
     soup = BeautifulSoup(r.content, "html.parser")
-    get_data(soup)
+    text_data = get_data(soup)
     # get any links to other wiki pages here
-    found_web_links = soup.select('a')
+    found_web_links = soup.find_all('a', href=True)
     actual_web_links = [web_link['href'] for web_link in found_web_links] 
     links_to_scrape = []
     for link in actual_web_links:
@@ -37,31 +39,34 @@ def scrape_page(url, file):
             #print(link)
     if len(links_to_scrape) != 0:
         next_page = url[:8] + source_url + links_to_scrape[1]
-        if next_page == url:
+        if next_page == url or next_page in visited:
             pass
-        #print(next_page)
-        scrape_page(next_page, file)
+        else:
+            visited.add(next_page)
+            print(visited)
+            scrape_page(next_page, file)
     else:
         print ("Done")
-    text = soup.find_all("p")
-    file.write(str(text))
-    file.close()
+    file.write(text_data + '\n\n')
+    return
 
 # function to get all text data found in the html using the 'p' paragraph tag and return it 
-def get_data(soup):
-    list(soup.children)
- 
-    # find all occurrence of p in HTML
-    # includes HTML tags
-    # testing
-    # print(soup.find_all('p'))
-    
+# main goal is only retrieving text information with no html
+def get_data(soup): 
+
+    #debugging
     print('\n\n')
+
+    paragraphs = soup.find_all('p')
+    text_data = ""
+    for p in paragraphs:
+        # strip all the html tags for each 'p' tagged paragraph in this web page to only get
+        # straight text information
+        text_data += BeautifulSoup(str(p), "html.parser").get_text() + "\n"
     
-    # return only text
-    # does not include HTML tags
-    return soup.find_all('p')[0].get_text()
+    return text_data
 
 
 if __name__ == "__main__":
     scrape_page(landing_page, output_file)
+    output_file.close()
