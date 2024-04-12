@@ -42,9 +42,11 @@ def get_filing_form(headers, cik):
     # example for 1st form
     first_form = all_10k_forms.iloc[0]["primaryDocument"]
 
+    filing_date = all_10k_forms.iloc[0]["filingDate"]
+    report_date = all_10k_forms.iloc[0]["reportDate"]
     accession_number = all_10k_forms.iloc[0]["accessionNumber"].replace("-", "")
 
-    return f"https://www.sec.gov/Archives/edgar/data/{cik}/{accession_number}/{first_form}"
+    return f"https://www.sec.gov/Archives/edgar/data/{cik}/{accession_number}/{first_form}", filing_date, report_date, accession_number
     
     
 
@@ -83,56 +85,56 @@ This function will extract the sections from the page's table of contents
     args: df (table of contents)
     returns: df (Data from each section)
 """
-def extract_sections(table_contents, soup):
-
-    # with open('table_of_contents.txt', 'w', encoding='utf-8') as file:
-    #     file.write(soup.prettify()) 
-    
+def extract_sections(table_contents, soup, filing_link, filing_date, report_date, accession_num):
     sections = []
-    
+
+    # Create a dictionary containing filing details
+    filing_details = {
+        "filing_link": filing_link,
+        "filing_date": filing_date,
+        "report_date": report_date,
+        "accession_num": accession_num
+    }
+
+    # Append filing details to the sections list
+    sections.append(filing_details)
+
     span_texts = soup.find_all('span')
 
     for i in range(len(table_contents)):
         section_titles = table_contents.loc[i, 'Topic']
         page_numbers = table_contents.loc[i, 'Page Number']
         item_number = table_contents.loc[i, 'Item Number']
-        
+
         if i == len(table_contents) - 1:
             next_item_with_title_abbr = "NONE"
-            
         else:
-            next_item_with_title_abbr = table_contents.loc[i+1, 'Item Number'] + " " + table_contents.loc[i+1, 'Topic'][0][0]
+            next_item_with_title_abbr = table_contents.loc[i + 1, 'Item Number'] + " " + table_contents.loc[i + 1, 'Topic'][0][0]
+
         for title, page_number in zip(section_titles, page_numbers):
-            
             item_with_title_abbr = item_number + " " + title[0]
             found_starting_point = False
             section_text = []
-            
+
             for span in span_texts:
                 if found_starting_point:
-                    # Continue parsing from the starting point
-                    # Check if the keyword is found
                     if next_item_with_title_abbr.upper() in span.text:
-                        # Keyword found, stop parsing
                         break
                     else:
-                        # Continue parsing
                         section_text.append(span.text.strip())
                 else:
-                    # Check if the starting point is found
                     if item_with_title_abbr.upper() in span.text:
-                        # Starting point found, begin parsing
                         found_starting_point = True
 
             sections.append({
-                    "title": title,
-                    "page_number": page_number,
-                    "text": "\n".join(section_text)
-                })
-        
-        # break at first to prevent long run time
-        with open('sections.json', 'w', encoding='utf-8') as json_file:
-            json.dump(sections, json_file, ensure_ascii=False, indent=4)
+                "title": title,
+                "page_number": page_number,
+                "text": "\n".join(section_text)
+            })
+
+    # Write the sections data along with filing details to the JSON file
+    with open('sections.json', 'w', encoding='utf-8') as json_file:
+        json.dump(sections, json_file, ensure_ascii=False, indent=4)
 
         
 
@@ -141,8 +143,7 @@ if __name__ == "__main__":
 
     companyData = get_tickers(headers)        
 
-    filing_link = get_filing_form(headers, companyData.iloc[0]['cik_str'])
-    print(filing_link)
+    filing_link, filing_date, report_date, accession_num = get_filing_form(headers, companyData.iloc[0]['cik_str'])
 
     filing_data = requests.get(filing_link, headers=headers)
     
@@ -150,13 +151,6 @@ if __name__ == "__main__":
     
     table_contents = extract_page_directory(soup)
 
-    extract_sections(table_contents, soup)
+    extract_sections(table_contents, soup, filing_link, filing_date, report_date, accession_num)
 
 
-    # file_test = r"10k_microsoft.csv"
-    # os.chdir(r"C:\Users\Jimmy\OneDrive\Desktop\GitHub\Data-Centric-FinGPT-Research\scrapers\SEC_Filings_Edgar\10K")
-    # print(os.getcwd())
-    # new_df = pd.read_csv(file_test)
-    # print(new_df)
-
-    
