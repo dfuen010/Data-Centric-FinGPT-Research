@@ -31,9 +31,24 @@ api_wrapper_params['issueIds'] = json_response['issueId']
 json_response = api_wrapper.request()
 ```
 
-### Translate Endpoint
+### Endpoints
 
-A majority of the CNBC API endpoints require an `issueId` or `issueIds` parameter. The translate endpoint is used to convert a symbol to an `issueId`.
+- **TRANSLATE**
 
-The APIWrapper class contains a translation table which can be loaded and saved to a file to reduce the number of requests to the CNBC API.
-`api_wrapper.translation_table_save('translation_table.json')`
+  A majority of the CNBC API endpoints require an `issueId` or `issueIds` parameter. The translate endpoint is used to convert a symbol to an `issueId`.
+
+  The APIWrapper class contains a translation table which can be loaded and saved to a file to reduce the number of requests to the CNBC API.
+  `api_wrapper.translation_table_save('translation_table.json')`
+
+- **AUTO_COMPLETE**
+  - Get auto suggestion by familiar terms or phrase
+  - Requires phrase or term as param
+- **GET_SUMMARY**
+  - Get summary information of stock quote, index, exchange, etc...
+  - Requires `issueId` of whichever item you are investigating.
+- **GET_EARNINGS_CHART**
+  - Generate image of earnings chart of specific stock quote, index, exchange, etc…
+  - Requires `issueId` of whichever item you are investigating.
+- **GET_FUNDAMENTALS**
+  - Get fundamental information of stock quote, index, exchange, etc…
+  - Requires `issueId` of whichever item you are investigating.
