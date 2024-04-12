@@ -22,3 +22,6 @@ with open('data.json', 'w') as f:
     json.dump(companyDict, f)
     
     
+data = yf.download("SPY AAPL", period="1mo")
+
+print(data)

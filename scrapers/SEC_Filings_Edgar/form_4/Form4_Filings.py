@@ -1,7 +1,13 @@
 import pandas as pd
+from html.parser import HTMLParser
 import requests
 from bs4 import BeautifulSoup
 import io
+
+class MyHTMLParser(HTMLParser):
+    def handle_data(self, data):
+        print(data.strip())
+    
 
 headers = {'User-Agent': "email@address.com"}
 
@@ -11,11 +17,9 @@ companyTickers = requests.get(
     )
 
 # dictionary to dataframe
-companyData = pd.DataFrame.from_dict(companyTickers.json(),
-                                     orient='index')
+companyData = pd.DataFrame.from_dict(companyTickers.json(),orient='index')
 
-companyData['cik_str'] = companyData['cik_str'].astype(
-                           str).str.zfill(10)
+companyData['cik_str'] = companyData['cik_str'].astype(str).str.zfill(10)
 
 # example for 1st company
 cik = companyData.iloc[0]['cik_str']
@@ -29,9 +33,7 @@ filingMetadata = requests.get(
 # Getting into the filings reports
 # print(filingMetadata.json()['filings']['recent'].keys())
 
-allForms = pd.DataFrame.from_dict(
-             filingMetadata.json()['filings']['recent']
-             )
+allForms = pd.DataFrame.from_dict(filingMetadata.json()['filings']['recent'])
 
 # Getting the 10-K filings + variations
 form_4 = allForms[allForms['form'].str.contains('4')]
@@ -46,7 +48,11 @@ xml_form4 = requests.get(
     f'https://www.sec.gov/Archives/edgar/data/{cik}/{accessNum_1}/{document_1}',
     headers=headers
     )
-  
+
+print("https://www.sec.gov/Archives/edgar/data/")
+print(cik)
+print(accessNum_1)
+print(document_1)
 xml_form4 = io.StringIO(xml_form4.text)
 parse_form4 = pd.read_html(xml_form4)
 
@@ -54,6 +60,8 @@ parse_form4 = pd.read_html(xml_form4)
 soup = BeautifulSoup(xml_form4, 'html.parser')
 # print(soup.prettify())
 # # Find all <a> elements with href containing "getcompany"
+parser = MyHTMLParser()
+parser.feed(soup.prettify())
 reporting_person_links = soup.find_all('a', href=lambda href: href and 'getcompany' in href)
 
 # # Extract the text from the first link found
@@ -62,3 +70,10 @@ if reporting_person_links:
     print("Reporting Person:", reporting_person_name)
 else:
     print("Reporting Person not found in the HTML.")
+
+
+# Extracting company name
+company_name_element = soup.find('td', valign='top', width='35%')
+company_name = company_name_element.find('a').text.strip()
+
+print("Company Name:", company_name)
