@@ -95,11 +95,31 @@ with open(csv_file, 'w', newline='', encoding='utf-8') as csvfile:
     for item in ranges:
         writer.writerow(item)
 
-csv_columns = ["Name", "Value", "SectorAvg", "SectorHigh", "SectorLow", "IndustryAvg", "IndustryHigh", "IndustryLow", "RawValue", "PerfDate" ]
-csv_file = "./datasets/News/cnbc/cnbc_aapl_fundamentals_values.csv"
+dataset = []
+for value in values:
+    name = value["Name"]
+    sector_avg = value["SectorAvg"]
+    sector_high = value["SectorHigh"]
+    sector_low = value["SectorLow"]
+    industry_avg = value["IndustryAvg"]
+    industry_high = value["IndustryHigh"]
+    industry_low = value["IndustryLow"]
 
-with open(csv_file, 'w', newline='', encoding='utf-8') as csvfile:
-    writer = csv.DictWriter(csvfile, fieldnames=csv_columns)
-    writer.writeheader()
-    for item in values:
-        writer.writerow(item)
+    dataset.append({
+        "Name": name,
+        "SectorAvg": sector_avg,
+        "SectorHigh": sector_high,
+        "SectorLow": sector_low,
+        "IndustryAvg": industry_avg,
+        "IndustryHigh": industry_high,
+        "IndustryLow": industry_low
+    })
+
+csv_columns = ["Name", "SectorAvg", "SectorHigh", "SectorLow", "IndustryAvg", "IndustryHigh", "IndustryLow"]
+
+# Create a csv file from the dataset
+keys = dataset[0].keys()
+with open('./datasets/News/cnbc/cnbc_aapl_fundamentals_values.csv', 'w', newline='') as f:
+    dict_writer = csv.DictWriter(f, keys)
+    dict_writer.writeheader()
+    dict_writer.writerows(dataset)
