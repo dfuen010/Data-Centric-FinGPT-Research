@@ -3,7 +3,8 @@
         "filing_link": "https://www.sec.gov/Archives/edgar/data/0000789019/000095017023035122/msft-20230630.htm",
         "filing_date": "2023-07-27",
         "report_date": "2023-06-30",
-        "accession_num": "000095017023035122"
+        "accession_num": "000095017023035122",
+        "company_ticker": "MSFT"
     },
     {
         "title": "Business",

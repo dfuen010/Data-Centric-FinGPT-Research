@@ -83,9 +83,12 @@ def extract_page_directory(soup):
 """
 This function will extract the sections from the page's table of contents
     args: df (table of contents)
-    returns: df (Data from each section)
+    args: soup (filing link)
+    args: filing_link, filing_date, report_date, accession_num, companytest_ticker (filing details)
+    effects: creates a JSON file with the report data, split up into sections where each section is a new topic
+    returns: none
 """
-def extract_sections(table_contents, soup, filing_link, filing_date, report_date, accession_num):
+def extract_sections(table_contents, soup, filing_link, filing_date, report_date, accession_num, companytest_ticker):
     sections = []
 
     # Create a dictionary containing filing details
@@ -93,7 +96,8 @@ def extract_sections(table_contents, soup, filing_link, filing_date, report_date
         "filing_link": filing_link,
         "filing_date": filing_date,
         "report_date": report_date,
-        "accession_num": accession_num
+        "accession_num": accession_num,
+        "company_ticker": companytest_ticker
     }
 
     # Append filing details to the sections list
@@ -133,7 +137,8 @@ def extract_sections(table_contents, soup, filing_link, filing_date, report_date
             })
 
     # Write the sections data along with filing details to the JSON file
-    with open('sections.json', 'w', encoding='utf-8') as json_file:
+    file_name = f"{companytest_ticker}_10kfiling_{filing_date}.json"
+    with open(file_name, 'w', encoding='utf-8') as json_file:
         json.dump(sections, json_file, ensure_ascii=False, indent=4)
 
         
@@ -141,9 +146,14 @@ def extract_sections(table_contents, soup, filing_link, filing_date, report_date
 if __name__ == "__main__":
     headers = {'User-Agent': "email@address.com"}
 
+    # Get all the tickers
     companyData = get_tickers(headers)        
 
-    filing_link, filing_date, report_date, accession_num = get_filing_form(headers, companyData.iloc[0]['cik_str'])
+    # Creating a test company for smaller scale first
+    companytest = companyData.iloc[0]['cik_str']
+    companytest_ticker = companyData.iloc[0]['ticker']
+    
+    filing_link, filing_date, report_date, accession_num = get_filing_form(headers, companytest)
 
     filing_data = requests.get(filing_link, headers=headers)
     
@@ -151,6 +161,6 @@ if __name__ == "__main__":
     
     table_contents = extract_page_directory(soup)
 
-    extract_sections(table_contents, soup, filing_link, filing_date, report_date, accession_num)
+    extract_sections(table_contents, soup, filing_link, filing_date, report_date, accession_num, companytest_ticker)
 
 
