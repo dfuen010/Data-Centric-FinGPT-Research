@@ -29,7 +29,7 @@ start_date = '2022-01-01'
 end_date = '2022-12-31'
 
 # Define the folder path where CSV files will be saved
-folder_path = 'datasets/FinNLP_testing'
+folder_path = 'datasets/News/yahoo_finance'
 
 # Iterate over each stock symbol
 for symbol in stock_symbols:
