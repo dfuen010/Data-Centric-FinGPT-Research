@@ -1,0 +1,98 @@
+{
+    "36276": {
+        "Ranges": [
+            {
+                "Name": "52-Wk Hi/Lo",
+                "HighValue": "199.62",
+                "HighValueRaw": "199.62",
+                "HighDate": "12/14/23",
+                "LowValue": "159.78",
+                "LowValueRaw": "159.78",
+                "LowDate": "04/12/23"
+            },
+            {
+                "Name": "5-Yr Hi/Lo",
+                "HighValue": "199.62",
+                "HighValueRaw": "199.62",
+                "HighDate": "12/14/23",
+                "LowValue": "42.57",
+                "LowValueRaw": "42.5675",
+                "LowDate": "06/03/19"
+            },
+            {
+                "Name": "10-Yr Hi/Lo",
+                "HighValue": "199.62",
+                "HighValueRaw": "199.62",
+                "HighDate": "12/14/23",
+                "LowValue": "18.26",
+                "LowValueRaw": "18.26177",
+                "LowDate": "04/15/14"
+            }
+        ],
+        "WsodIssue": "36276",
+        "Industry": "Computer Hardware",
+        "Sector": "Technology",
+        "Values": [
+            {
+                "SectorAvg": "0.2321147",
+                "Name": "FiveDayReturn",
+                "Value": "4.11%",
+                "RawValue": "4.11015449935132",
+                "PerfDate": "--",
+                "IndustryAvg": "-0.5058306",
+                "IndustryHigh": "16.30882",
+                "IndustryLow": "-9.68468",
+                "SectorHigh": "21.10337",
+                "SectorLow": "-21.35922"
+            },
+            {
+                "SectorAvg": "1.806998",
+                "Name": "OneMonthReturn",
+                "Value": "1.92%",
+                "RawValue": "1.91652716042256",
+                "PerfDate": "--",
+                "IndustryAvg": "-0.08153012",
+                "IndustryHigh": "23.02148",
+                "IndustryLow": "-20.59406",
+                "SectorHigh": "92.80206",
+                "SectorLow": "-27.40113"
+            },
+            {
+                "SectorAvg": "24.41959",
+                "Name": "ThreeMonthReturn",
+                "Value": "-5.04%",
+                "RawValue": "-5.03980206540448",
+                "PerfDate": "--",
+                "IndustryAvg": "2.993471",
+                "IndustryHigh": "224.5199",
+                "IndustryLow": "-28.64769",
+                "SectorHigh": "224.5199",
+                "SectorLow": "-54.29337"
+            },
+            {
+                "SectorAvg": "20.31683",
+                "Name": "YTDReturn",
+                "Value": "-8.30%",
+                "RawValue": "-8.30000519399575",
+                "PerfDate": "--",
+                "IndustryAvg": "-2.055801",
+                "IndustryHigh": "233.5045",
+                "IndustryLow": "-36.85039",
+                "SectorHigh": "233.5045",
+                "SectorLow": "-56.17213"
+            },
+            {
+                "SectorAvg": "73.83098",
+                "Name": "OneYearReturn",
+                "Value": "10.27%",
+                "RawValue": "10.2748282323548",
+                "PerfDate": "--",
+                "IndustryAvg": "34.89795",
+                "IndustryHigh": "841.5235",
+                "IndustryLow": "-58.31601",
+                "SectorHigh": "3353.119",
+                "SectorLow": "-74.4186"
+            }
+        ]
+    }
+}
