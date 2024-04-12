@@ -6,13 +6,11 @@ import csv
 api_wrapper = APIWrapper(
     # RapidAPI API key
     api_key='4d6d8e080bmsh68dcf84f504154ap1335bbjsn0a70ea825650',
-    endpoint=Endpoints.TRANSLATE
+    endpoint=Endpoints.LIST_TRENDING_NEWS
 )
 
 # Grab the 50 most trending news articles on CNBC
-api_wrapper.endpoint = Endpoints.LIST_TRENDING_NEWS
 api_wrapper_params = api_wrapper.params
-print(api_wrapper_params)
 api_wrapper_params['count'] = 50
 response = api_wrapper.request()
 
@@ -20,7 +18,7 @@ response = api_wrapper.request()
 response_json = json.dumps(response, indent=4)
 
 # Save the response to a file
-with open('./scrapers/cnbc/trending_news.json', 'w') as f:
+with open('./datasets/News/cnbc/cnbc_trending_news.json', 'w') as f:
 	f.write(response_json)
 
 # From the json, convert the response to a dataset of news articles, each with the following fields:
@@ -51,7 +49,7 @@ for article in articles:
 
 # Create a csv file from the dataset
 keys = dataset[0].keys()
-with open('./scrapers/cnbc/trending_news.csv', 'w', newline='') as f:
+with open('./datasets/News/cnbc/cnbc_trending_news.csv', 'w', newline='') as f:
 	dict_writer = csv.DictWriter(f, keys)
 	dict_writer.writeheader()
 	dict_writer.writerows(dataset)
