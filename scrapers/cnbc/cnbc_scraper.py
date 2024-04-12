@@ -1,15 +1,14 @@
-import http.client
+import requests
 
-conn = http.client.HTTPSConnection("cnbc.p.rapidapi.com")
+url = "https://cnbc.p.rapidapi.com/symbols/get-earnings-chart"
+
+querystring = {"issueId":"36276","numberOfYears":"3"}
 
 headers = {
-    'X-RapidAPI-Key': "4d6d8e080bmsh68dcf84f504154ap1335bbjsn0a70ea825650",
-    'X-RapidAPI-Host': "cnbc.p.rapidapi.com"
+	"X-RapidAPI-Key": "4d6d8e080bmsh68dcf84f504154ap1335bbjsn0a70ea825650",
+	"X-RapidAPI-Host": "cnbc.p.rapidapi.com"
 }
 
-conn.request("GET", "/symbols/get-earnings-chart?issueId=36276&numberOfYears=3", headers=headers)
+response = requests.get(url, headers=headers, params=querystring)
 
-res = conn.getresponse()
-data = res.read()
-
-print(data.decode("utf-8"))
+print(response.json())
