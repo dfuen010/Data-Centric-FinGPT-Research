@@ -4,6 +4,7 @@ from xbrl import XBRLParser, GAAP, GAAPSerializer, DEISerializer
 from bs4 import BeautifulSoup
 import os
 import sys
+import json
 
 def get_tickers(headers):
     company_tickers = requests.get(
@@ -87,22 +88,53 @@ def extract_sections(table_contents, soup):
     # with open('table_of_contents.txt', 'w', encoding='utf-8') as file:
     #     file.write(soup.prettify()) 
     
-    span_texts = soup.find_all('span', style='background-color:rgba(0,0,0,0);color:rgba(0,0,0,1);white-space:pre-wrap;font-weight:normal;font-size:10.0pt;font-family:"Arial", sans-serif;min-width:fit-content;')
+    sections = []
+    
+    span_texts = soup.find_all('span')
 
     for i in range(len(table_contents)):
         section_titles = table_contents.loc[i, 'Topic']
         page_numbers = table_contents.loc[i, 'Page Number']
         item_number = table_contents.loc[i, 'Item Number']
-        for j in range(len(section_titles)):
-            title = section_titles[j]
-            page_number = page_numbers[j]
+        
+        if i == len(table_contents) - 1:
+            next_item_with_title_abbr = "NONE"
+            
+        else:
+            next_item_with_title_abbr = table_contents.loc[i+1, 'Item Number'] + " " + table_contents.loc[i+1, 'Topic'][0][0]
+        for title, page_number in zip(section_titles, page_numbers):
+            
             item_with_title_abbr = item_number + " " + title[0]
+            found_starting_point = False
+            section_text = []
+            
             for span in span_texts:
-                if span.text == item_with_title_abbr:
-                    print(span.text)
+                if found_starting_point:
+                    # Continue parsing from the starting point
+                    # Check if the keyword is found
+                    if next_item_with_title_abbr.upper() in span.text:
+                        # Keyword found, stop parsing
+                        break
+                    else:
+                        # Continue parsing
+                        section_text.append(span.text.strip())
+                else:
+                    # Check if the starting point is found
+                    if item_with_title_abbr.upper() in span.text:
+                        # Starting point found, begin parsing
+                        found_starting_point = True
+
+            sections.append({
+                    "title": title,
+                    "page_number": page_number,
+                    "text": "\n".join(section_text)
+                })
+        
         # break at first to prevent long run time
-        if i == 1:
-            break
+        with open('sections.json', 'w', encoding='utf-8') as json_file:
+            json.dump(sections, json_file, ensure_ascii=False, indent=4)
+
+        
 
 if __name__ == "__main__":
     headers = {'User-Agent': "email@address.com"}
