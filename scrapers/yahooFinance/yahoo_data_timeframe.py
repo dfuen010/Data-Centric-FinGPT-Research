@@ -1,3 +1,4 @@
+import os
 import yfinance as yf
 from requests_ratelimiter import LimiterMixin, MemoryQueueBucket
 from pyrate_limiter import Duration, RequestRate, Limiter
@@ -27,6 +28,9 @@ stock_symbols = ['AAPL', 'MSFT', 'GOOGL']
 start_date = '2022-01-01'
 end_date = '2022-12-31'
 
+# Define the folder path where CSV files will be saved
+folder_path = 'datasets/FinNLP_testing'
+
 # Iterate over each stock symbol
 for symbol in stock_symbols:
     # Use custom session with Ticker constructor
@@ -38,5 +42,6 @@ for symbol in stock_symbols:
     # Filter actions data for the specified time frame
     ticker_actions_filtered = ticker_actions[(ticker_actions.index >= start_date) & (ticker_actions.index <= end_date)]
 
-    # Save the filtered actions data to a CSV file
-    ticker_actions_filtered.to_csv(f'{symbol}_actions_data_{start_date}_{end_date}.csv')
+    # Save the filtered actions data to the specified folder
+    file_path = os.path.join(folder_path, f'{symbol}_actions_data.csv')
+    ticker_actions_filtered.to_csv(file_path, index=True)
