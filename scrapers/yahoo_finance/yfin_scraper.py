@@ -18,9 +18,9 @@ for company in list_companies:
     companyDict[company] = ticker.info
     
 
-# # put data in to json
-# with open('data.json', 'w') as f:
-#     json.dump(companyDict, f)
+# put data in to json
+with open('data.json', 'w') as f:
+    json.dump(companyDict, f)
     
 
 
