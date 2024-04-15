@@ -6,3 +6,7 @@ However, we have to wait until the organization accepts me which can take a long
 3/23/2024
 -Update to the peft models idea:
   The problem with the second part of the peft models implementation was that we needed to make and designate a offload folder in our automodel options. After identifying that problem, we simply needed to change the pretrained options. However, we run now into a new problem, the RAM for a regular session runs out if we use a google colab notebook. We have to figure out how to save memory a little more to make a functioning notebook.
+
+
+4/12/2024
+I found a method of using the models online without being limited to peft's fixed model parameters. However, the method requires running on kaggle with GPU to use kaggle's free access to hugging face's tokens and wandb api. It cannot be used any place else. This means that we can't do this on our own internet or on colab. As this is an obvious issue, I am attempting many methods in order to find a workaround.
