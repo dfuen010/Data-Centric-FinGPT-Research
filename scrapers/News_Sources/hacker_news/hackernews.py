@@ -25,18 +25,29 @@ def combine_all_items(starting_id):
     return all_json_files
 
 if __name__ == "__main__":
-    # Maximum item id, which is the latest item, can walk backwards to discover all items.
     url_latest_item = "https://hacker-news.firebaseio.com/v0/maxitem.json?print=pretty"
-    latest_item = requests.get(url_latest_item).json()
-
+    try:
+        latest_item = requests.get(url_latest_item).json()
+    except Exception as e:
+        print(f"Failed to fetch latest item ID: {e}")
+        latest_item = 33620611  # Fallback to the last known ID
+    
     start = time.time()
+    print("Fetching Hacker News items...")
 
-    # Get all items
     all_json_files = combine_all_items(latest_item)
-    
+
     end = time.time()
-    print(end - start)
-    
-    # Convert to dataframe
-    df = pd.DataFrame(all_json_files)
-    df.to_json("hackernews.json", orient="records", lines=True)
+    print(f"Fetched {len(all_json_files)} items in {end - start:.2f} seconds.")
+
+    # Filter out None values (failed requests)
+    all_json_files = [item for item in all_json_files if item is not None]
+
+    print(f"Successfully fetched {len(all_json_files)} items.")
+
+    if all_json_files:
+        df = pd.DataFrame(all_json_files)
+        df.to_json("hackernews.json", orient="records", lines=True)
+        print("Data saved to hackernews.json.")
+    else:
+        print("No data to save.")

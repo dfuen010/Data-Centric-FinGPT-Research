@@ -1,5 +1,5 @@
 import requests
-
+#free api not accessible
 API_KEY = ""
 API_ENDPOINT = "https://api.newsfilter.io/search?token={}".format()
 
