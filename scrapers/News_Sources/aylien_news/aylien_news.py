@@ -1,41 +1,59 @@
 from __future__ import print_function
-
-import time
 import aylien_news_api
 from aylien_news_api.rest import ApiException
-from pprint import pprint
 
-configuration = aylien_news_api.Configuration(
-    host="https://api.aylien.com/news"
-)
-
+# Configure Aylien News API
 configuration = aylien_news_api.Configuration(
     host="https://api.aylien.com/news",
     api_key={
-        'app_id': '720ad7a9'
-    }
-)
-
-configuration = aylien_news_api.Configuration(
-    host="https://api.aylien.com/news",
-    api_key={
+        'app_id': '720ad7a9',
         'app_key': '490ab930b4123fa941e670b8895f76d0'
     }
 )
 
+# Create API client
 with aylien_news_api.ApiClient(configuration) as api_client:
     api_instance = aylien_news_api.DefaultApi(api_client)
-    unknown_base_type = {"$and":[{"$or":[{"body":{"$text":"Tim Cook"}},{"social.shares.count.reddit.max":{"$gte":5000,"$boost":5}}]},{"entity":{"$and":[{"name":{"$text":"Apple","$boost":2}},{"$not":[{"type":{"$eq":"Fruit"}}]}]}}]}
-published_at_start = 'published_at_start_example'
-published_at_end = 'published_at_end_example'
-_return = ['_return_example']
-sort_by = 'published_at'
-sort_direction = 'desc'
-cursor = '*'
-per_page = 10
+    
+    # Define query parameters
+    query = {
+        "$and": [
+            {
+                "$or": [
+                    {"body": {"$text": "Tim Cook"}},
+                    {"social.shares.count.reddit.max": {"$gte": 5000, "$boost": 5}}
+                ]
+            },
+            {
+                "entity": {
+                    "$and": [
+                        {"name": {"$text": "Apple", "$boost": 2}},
+                        {"$not": [{"type": {"$eq": "Fruit"}}]}
+                    ]
+                }
+            }
+        ]
+    }
+    per_page = 10
+    sort_by = 'published_at'
+    sort_direction = 'desc'
 
-try:
-    api_response = api_instance.advanced_list_stories(unknown_base_type, published_at_start=published_at_start, published_at_end=published_at_end, _return=_return, sort_by=sort_by, sort_direction=sort_direction, cursor=cursor, per_page=per_page)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->advanced_list_stories: %s\n" % e)
+    try:
+        # Call the API to get article information
+        api_response = api_instance.advanced_list_stories(
+            query,
+            per_page=per_page,
+            sort_by=sort_by,
+            sort_direction=sort_direction
+        )
+        
+        # Extract and print article information
+        for article in api_response.stories:
+            print("Title:", article.title)
+            print("Source:", article.source.name)
+            print("Published At:", article.published_at)
+            print("Summary:", article.summary)
+            print("URL:", article.links.permalink)
+            print()
+    except ApiException as e:
+        print("Exception when calling DefaultApi->advanced_list_stories: %s\n" % e)
