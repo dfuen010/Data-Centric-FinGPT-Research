@@ -126,6 +126,6 @@ def scrape_google_finance_main_page():
     else:
         return None
 
-# scrape_google_finance_main_page()
-with open("datasets/google_finance/google_finance_main.json", "w") as file:
-    file.write(json.dumps(scrape_google_finance_main_page(), indent=2, ensure_ascii=False))
+# Write the scraped data to a JSON file
+with open("google_finance_data.json", "w") as file:
+    json.dump(scrape_google_finance_main_page(), file, indent=2, ensure_ascii=False)
