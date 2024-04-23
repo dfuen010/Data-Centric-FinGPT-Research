@@ -1,17 +1,55 @@
-# Python 3
-import http.client, urllib.parse
+import http.client
+import urllib.parse
+import json
 
-conn = http.client.HTTPSConnection('api.thenewsapi.com')
+def fetch_news():
+    try:
+        conn = http.client.HTTPSConnection('api.thenewsapi.com')
 
-params = urllib.parse.urlencode({
-    'api_token': 'nXUsig3871ipD8WkXDFY8prDewWMUG7xIiSkR2yp',
-    'categories': 'business,tech',
-    'limit': 50,
-    })
+        params = urllib.parse.urlencode({
+            'api_token': 'nXUsig3871ipD8WkXDFY8prDewWMUG7xIiSkR2yp',
+            'categories': 'business,tech',
+            'limit': 50,
+        })
 
-conn.request('GET', '/v1/news/all?{}'.format(params))
+        conn.request('GET', '/v1/news/all?{}'.format(params))
 
-res = conn.getresponse()
-data = res.read()
+        res = conn.getresponse()
+        if res.status != 200:
+            print(f"Failed to fetch news. HTTP Error {res.status}: {res.reason}")
+            return None
 
-print(data.decode('utf-8'))
+        data = res.read()
+        return data.decode('utf-8')
+    except Exception as e:
+        print(f"An error occurred while fetching news: {e}")
+        return None
+
+def parse_news(data):
+    if data:
+        try:
+            news_json = json.loads(data)
+            articles = news_json.get('data', {}).get('articles', [])
+            
+            if articles:
+                print("Found", len(articles), "articles.")
+                for article in articles:
+                    print("Title:", article.get('title'))
+                    print("Description:", article.get('description'))
+                    print("URL:", article.get('url'))
+                    print("Published At:", article.get('published_at'))
+                    print("Source:", article.get('source', {}).get('name'))
+                    print("-" * 50)
+            else:
+                print("No articles found in the data.")
+        except json.JSONDecodeError as e:
+            print("Failed to parse JSON data:", e)
+    else:
+        print("No data provided to parse.")
+
+if __name__ == "__main__":
+    print("Fetching news from The News API...")
+    news_data = fetch_news()
+    if news_data:
+        print("Parsing fetched news...")
+        parse_news(news_data)
