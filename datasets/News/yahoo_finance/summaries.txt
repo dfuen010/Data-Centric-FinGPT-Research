@@ -1,0 +1,90 @@
+Name Summary:
+Summary not available
+
+VXX Summary:
+The ETN offers exposure to futures contracts of specified maturities on the VIX index and not direct exposure to the VIX index or its spot level. The index is designed to provide investors with exposure to one or more maturities of futures contracts on the CBOE Volatility Index®.
+
+IEFA Summary:
+The fund generally will invest at least 80% of its assets in the component securities of its underlying index and in investments that have economic characteristics that are substantially identical to the component securities of its underlying index. The index is designed to measure large-, mid- and small-capitalization equity market performance and includes stocks from Europe, Australasia and the Far East.
+
+USHY Summary:
+The fund will invest at least 80% of its assets in the component securities of the underlying index and it will invest at least 90% of its assets in fixed income securities of the types included in the underlying index that BFA believes will help the fund track the underlying index. The underlying index is designed to provide a broad representation of the U.S. dollar-denominated high yield corporate bond market.
+
+VIXY Summary:
+The index seeks to offer exposure to market volatility through publicly traded futures markets and is designed to measure the implied volatility of the S&P 500 over 30 days in the future.
+
+FBTC Summary:
+The index is constructed using bitcoin price feeds from eligible bitcoin spot markets and a volume-weighted median price (“VWMP”) methodology, calculated every 15 seconds based on VWMP spot market data over rolling sixty-minute increments. In seeking to achieve its investment objective, the trust will hold bitcoin and will value its shares daily as of 4:00 p.m. EST using the same methodology used to calculate the index. All of the trust’s bitcoin will be held by the custodian.
+
+EZU Summary:
+The fund generally will invest at least 80% of its assets in the component securities of its underlying index and in investments that have economic characteristics that are substantially identical to the component securities of its underlying index. The index consists of securities from the following 10 developed market countries: Austria, Belgium, Finland, France, Germany, Ireland, Italy, the Netherlands, Portugal and Spain.
+
+UVIX Summary:
+The index measures the daily performance of a portfolio of long positions in first and second month VIX futures contracts. This theoretical portfolio is rolled each day to maintain a consistent time to maturity of the futures contracts. The index is calculated daily at 4:00 p.m. (Eastern time) and at a value calculated from the average price for the futures contracts between 3:45 p.m. (Eastern time) and 4:00 p.m. (Eastern time).
+
+UVXY Summary:
+The index seeks to offer exposure to market volatility through publicly traded futures markets and is designed to measure the implied volatility of the S&P 500 over 30 days in the future.
+
+NVDQ Summary:
+The fund, under normal circumstances, invests in swap agreements that provide 200% inverse (opposite) daily exposure to NVDA equal to at least 80% of the fund’s net assets. The fund will enter into one or more swap agreements with major global financial institutions whereby the fund and the global financial institution will agree to exchange the return earned on an investment by the fund in NVDA that is equal, on a daily basis, to -200% of the value of the fund’s net assets. The fund is non-diversified.
+
+GOVT Summary:
+The fund will invest at least 80% of its assets in the component securities of the underlying index and will invest at least 90% of its assets in U.S. Treasury securities that BFA believes will help the fund track the underlying index. The underlying index includes publicly-issued U.S. Treasury securities that have a remaining maturity greater than one year and less than or equal to thirty years and have $300 million or more of outstanding face value.
+
+BITX Summary:
+The fund is an ETF that seeks to achieve its investment objective by investing its assets principally in cash-settled bitcoin futures contracts that trade only on an exchange registered with the Commodity Futures Trading Commission, which currently is the Chicago Mercantile Exchange, and cash,cash-like instruments or high-quality securities that serve as collateral to the fund’s investments in Bitcoin Futures Contracts. The fund is non-diversified.
+
+VHAI Summary:
+Vocodia Holdings Corp develops a conversational artificial intelligence (AI) sales and customer service software. The company offers DISA, a humanized conversational AI technology, that can complete each stage of the conversational aspect of the sales process, business-to-business, and business-to-consumer. It also offers IT services. The company was founded in 2020 and is based in Boca Raton, Florida.
+
+ARKG Summary:
+The fund is an actively-managed exchange-traded fund ("ETF") that will invest under normal circumstances primarily (at least 80% of its assets) in domestic and foreign equity securities of companies across multiple sectors, including healthcare, information technology, materials, energy and consumer discretionary, that are relevant to the fund's investment theme of the genomics revolution ("Genomics Revolution Companies"). It is non-diversified.
+
+PAVE Summary:
+The fund invests at least 80% of its total assets in the securities of the underlying index. The underlying index is designed to measure the performance of U.S. listed companies that provide exposure to domestic infrastructure development, including companies involved in construction and engineering; production of infrastructure raw materials, composites and products; industrial transportation; and producers/distributors of heavy construction equipment.
+
+ITB Summary:
+The index measures the performance of the home construction sector of the U.S. equity market, as defined by the index provider. The fund generally will invest at least 80% of its assets in the component securities of its underlying index and in investments that have economic characteristics that are substantially identical to the component securities of its underlying index. It is non-diversified.
+
+IGV Summary:
+The fund generally will invest at least 80% of its assets in the component securities of its underlying index and in investments that have economic characteristics that are substantially identical to the component securities of its underlying index. The index measures the performance of U.S.-traded stocks from the software industry and select companies from the interactive home entertainment and interactive media and services sub-industries in the U.S. and Canada. The fund is non-diversified.
+
+INDA Summary:
+The fund generally will collectively invest at least 80% of the fund's assets in the component securities of the underlying index and in investments that have economic characteristics that are substantially identical to the component securities of the underlying index. The index measures the performance of equity securities of companies whose market capitalization, as calculated by the index provider, represents the large- and mid-capitalization segments of the Indian securities market. The fund is non-diversified.
+
+AAAU Summary:
+The trust holds London Bars and Physical Gold of other specifications without numismatic value. It receives gold deposited by Authorized Participants in exchange for the creation of Baskets and delivers gold to Authorized Participants in exchange for Baskets surrendered to it for redemption.
+
+CALF Summary:
+Under normal circumstances, at least 80% of the fund's total assets (exclusive of collateral held from securities lending) will be invested in the component securities of the index. The index uses an objective, rules-based methodology to provide exposure to small-capitalization U.S. companies with high free cash flow yields.
+
+COWZ Summary:
+Under normal circumstances, at least 80% of the fund's total assets (exclusive of collateral held from securities lending) will be invested in the component securities of the index. The index uses an objective, rules-based methodology to provide exposure to large and mid-capitalization U.S. companies with high free cash flow yields. Companies with high free cash flow yields are commonly referred to as "cash cows".
+
+SVIX Summary:
+The index measures the daily inverse performance of a portfolio of first and second month VIX futures contracts. This theoretical portfolio is rolled each day to maintain a consistent time to maturity of the futures contracts. The index is calculated daily at 4:00 p.m. (Eastern time) and at a value calculated from the average price for the futures contracts between 3:45 p.m. (Eastern time) and 4:00 p.m. (Eastern time).
+
+ARKB Summary:
+The index is designed to reflect the performance of bitcoin in U.S. dollars. In seeking to achieve its investment objective, the trust will hold bitcoin and will value its shares daily based on the index.
+
+USMV Summary:
+The fund will invest at least 80% of its assets in the component securities of its underlying index and in investments that have economic characteristics that are substantially identical to the component securities of its underlying index. The index measures the performance of large and mid-capitalization equity securities listed on stock exchanges in the U.S. that, in the aggregate, have lower volatility relative to the large- and mid-cap U.S. equity market.
+
+VNM Summary:
+The fund normally invests at least 80% of its total assets in securities that comprise the fund's benchmark index. The index includes securities of Vietnamese companies. A company is generally considered to be a Vietnamese company if it is incorporated in Vietnam. It is non-diversified.
+
+SING Summary:
+SinglePoint Inc. focuses on providing renewable energy solutions and energy-efficient applications in the United States. The company offers solar and air purification services; and solar installation and brokerage services. It also operates as an online store; supplies hydroponic supplies and nutrients to commercial and individual farmers, as well as nutrients, lights, HVAC systems, and other products to individuals that are interested in horticulture; and offers automotive technology solutions for vehicle repairs. In addition, the company provides digital and direct marketing services focused on customer lead generation in the solar energy industry. Further, it offers solar, battery backup, and electric vehicle chargers to homeowners and commercial business. The company was incorporated in 2007 and is based in Phoenix, Arizona.
+
+NVDX Summary:
+The fund, under normal circumstances, invests in swap agreements that provide 200% daily exposure to NVDA equal to at least 80% of its net assets. The fund will enter into one or more swap agreements with major global financial institutions whereby the fund and the global financial institution will agree to exchange the return earned on an investment by the fund in NVDA that is equal, on a daily basis, to 200% of the value of the fund’s net assets. The fund is non-diversified.
+
+EFV Summary:
+The fund generally invests at least 80% of its assets in the component securities of its underlying index and in investments that have economic characteristics that are substantially identical to the component securities of its underlying index. The underlying index is a subset of the MSCI EAFE Index. Constituents of the underlying index include securities from Europe, Australasia and the Far East.
+
+QUAL Summary:
+The fund generally will invest at least 80% of its assets in the component securities of the underlying index and may invest up to 20% of its assets in certain futures, options and swap contracts, cash and cash equivalents. The index is based on a traditional market capitalization-weighted parent index, the MSCI USA Index.
+
+VIXM Summary:
+The fund seeks to meet its investment objective, by taking long positions in VIX futures contracts. It will also hold cash or cash equivalents such as U.S. Treasury securities or other high credit quality, short-term fixed-income or similar securities (such as shares of money market funds) as collateral for Financial Instruments and pending investment in Financial Instruments.
+

@@ -1,5 +1,4 @@
 import yfinance as yf
-import pandas as pd
 import json
 
 # Read the first 30 lines from the CSV file
@@ -28,16 +27,14 @@ for company in list_companies:
 with open('data.json', 'w') as f:
     json.dump(companyDict, f)
 
-# Get Summary of Company
-for company in list_companies:
-    summary = companyDict[company].get("longBusinessSummary", "Summary not available")
-    print(f"{company} Summary:")
-    print(summary)
-    print()
+# Write summaries to text file
+with open('datasets/news/yahoo_finance/summaries.txt', 'w') as f:
+    for company in list_companies:
+        summary = companyDict[company].get("longBusinessSummary", "Summary not available")
+        f.write(f"{company} Summary:\n{summary}\n\n")
 
-# Get last 1 month stock information (buy / sell)
-for company in list_companies:
-    stock_month = yf.download(company, period="1mo")
-    print(f"{company} Stock:")
-    print(stock_month)
-    print()
+# Write stock information to text file
+with open('datasets/news/yahoo_finance/stock_info.txt', 'w') as f:
+    for company in list_companies:
+        stock_month = yf.download(company, period="1mo")
+        f.write(f"{company} Stock:\n{stock_month}\n\n")
