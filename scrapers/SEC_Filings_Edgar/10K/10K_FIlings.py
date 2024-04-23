@@ -40,7 +40,7 @@ def get_filing_form(headers, cik):
 
     all_10k_forms = all_forms[all_forms['form'].str.contains('10-K|10-KT|10KSB|10KT405|10KSB40|10-K405|10-K/A')]
     # example for 1st form
-    first_form = all_10k_forms.iloc[0]["primaryDocument"]
+    first_form = all_10k_forms.iloc[1]["primaryDocument"]
 
     filing_date = all_10k_forms.iloc[0]["filingDate"]
     report_date = all_10k_forms.iloc[0]["reportDate"]
@@ -88,16 +88,16 @@ This function will extract the sections from the page's table of contents
     effects: creates a JSON file with the report data, split up into sections where each section is a new topic
     returns: none
 """
-def extract_sections(table_contents, soup, filing_link, filing_date, report_date, accession_num, companytest_ticker):
+def extract_sections(table_contents, soup, filing_info):
     sections = []
 
     # Create a dictionary containing filing details
     filing_details = {
-        "filing_link": filing_link,
-        "filing_date": filing_date,
-        "report_date": report_date,
-        "accession_num": accession_num,
-        "company_ticker": companytest_ticker
+        "filing_link": filing_info[0],
+        "filing_date": filing_info[1],
+        "report_date": filing_info[2],
+        "accession_num": filing_info[3],
+        "company_ticker": filing_info[4]
     }
 
     # Append filing details to the sections list
@@ -155,12 +155,14 @@ if __name__ == "__main__":
     
     filing_link, filing_date, report_date, accession_num = get_filing_form(headers, companytest)
 
+    print(filing_link)
     filing_data = requests.get(filing_link, headers=headers)
     
     soup = BeautifulSoup(filing_data.text, features="xml")
-    
+
     table_contents = extract_page_directory(soup)
 
-    extract_sections(table_contents, soup, filing_link, filing_date, report_date, accession_num, companytest_ticker)
+    filing_info = [filing_link, filing_date, report_date, accession_num, companytest_ticker]
+    extract_sections(table_contents, soup, filing_info)
 
 

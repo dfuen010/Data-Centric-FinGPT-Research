@@ -1,22 +1,22 @@
 import wikipediaapi
 import requests
 import re
-
+import random
 import requests
-
-# file for writing the text data we obtain from wikipedia
-output_file = open("wikipedia_data.txt", "w")
+import json
 
 
 # main code for scraping wikipedia 
 if __name__ == "__main__":
+    def write_by_sections(sections, page_data, level=0):
+        for s in sections:
+            encoded_title = " ".join(re.split("[^A-Za-z0-9]+", s.title)) 
+            encoded_text = " ".join(re.split("[^A-Za-z0-9]+", s.text)) 
+            
+            page_data["sections"][encoded_title] = {"text": encoded_text, "sections": {}}
 
-    def get_links(page):
-        links = page.links
-        print(links)
-        #for title in sorted(links.keys()):
-        #    print("%s: %s" % (title, links[title]))
-
+            # pass in for the json dictionary the new section of the page in recursion call
+            write_by_sections(s.sections, page_data["sections"][encoded_title], level + 1)
 
     # create a wikipedia object using the API with our user agent
     # this wikipedia object initalization creates our request to the wikipedia API using the User-Agent as the header
@@ -27,9 +27,45 @@ if __name__ == "__main__":
             extract_format=wikipediaapi.ExtractFormat.WIKI
     )
 
+    # We will scrape 200 pages from wikipedia to start with this scraper starting with the wiki page for python
+    pages = 200
+    i = 0
+    page_string = "Bank"
     # specifies a page to scrape text from 
-    page_text = wiki_wiki.page('Python_(programming_language)').text
-    encoded_text = " ".join(re.split("[^A-Za-z0-9]+", page_text)) 
-    output_file.write(encoded_text)
+    current_page = wiki_wiki.page(page_string)
 
-    output_file.close()
+    # dictionary to store wiki page information as a dictionary to convert to a JSON format (better storage for text information
+    # for ML purposes)
+    wiki_data = {}
+
+    # let's have an array that keeps track of the pages we have visited in the case we go to dead end (page with no link)
+    visited_pages = []
+    while i != pages:
+
+        i += 1
+        page_text = current_page.text
+        encoded_title = " ".join(re.split("[^A-Za-z0-9]+", current_page.title)) 
+        # remove any non-ascii values that may appear from the page text 
+        encoded_text = " ".join(re.split("[^A-Za-z0-9]+", page_text)) 
+        # add title and its text and sections to dictionary for JSON format
+        wiki_data[encoded_title] = {"text": encoded_text, "sections": {}}
+        write_by_sections(current_page.sections, wiki_data[encoded_title])
+
+        # next let's get the links to next pages and go to the next page and continue this loop
+        links = current_page.links
+        # let's go to a random page in our list of links
+        if len(links) != 0:
+            link_to_visit = random.choice(list(links.keys()))
+            current_page = links[link_to_visit]
+            visited_pages.append(current_page)
+        else:
+            # if there are any pages on our stack and we go to the previous and select a different link
+            if visited_pages:
+                current_page = visited_pages.pop()
+            else:
+                # we have no more pages to go back to so we break out
+                break
+        
+    # Convert the dictionary to JSON format for better storage of text data
+    with open("wikipedia_data.json", "w") as json_file:
+        json.dump(wiki_data, json_file, indent=4)

@@ -1,0 +1,289 @@
+{
+  "market_trends": {
+    "top_position": [
+      "Market indexes",
+      "Most active",
+      "Gainers",
+      "Losers",
+      "Climate leaders",
+      "Crypto",
+      "Currencies"
+    ],
+    "bottom_position": [
+      {
+        "index": 1,
+        "title": "Tesla Inc",
+        "quote": "TSLA",
+        "price": "$149.93",
+        "price_percent_change": "-3.55"
+      },
+      {
+        "index": 2,
+        "title": "Nexstar Media Group Inc",
+        "quote": "NXST",
+        "price": "$161.96",
+        "price_percent_change": "+1.94"
+      },
+      {
+        "index": 3,
+        "title": "Amazon.com Inc",
+        "quote": "AMZN",
+        "price": "$179.17",
+        "price_percent_change": "-1.16"
+      },
+      {
+        "index": 4,
+        "title": "Regeneron Pharmaceuticals Inc",
+        "quote": "REGN",
+        "price": "$893.99",
+        "price_percent_change": "-0.80"
+      },
+      {
+        "index": 5,
+        "title": "Plug Power Inc",
+        "quote": "PLUG",
+        "price": "$2.71",
+        "price_percent_change": "-0.73"
+      },
+      {
+        "index": 6,
+        "title": "Apple Inc",
+        "quote": "AAPL",
+        "price": "$167.04",
+        "price_percent_change": "-0.57"
+      }
+    ]
+  },
+  "interested_in": {
+    "top_position": [
+      {
+        "index": 1,
+        "title": "Tesla Inc",
+        "quote": "TSLA",
+        "price_change": "-$5.52",
+        "percent_price_change": "-3.55"
+      },
+      {
+        "index": 2,
+        "title": "Nexstar Media Group Inc",
+        "quote": "NXST",
+        "price_change": "+$3.09",
+        "percent_price_change": "+1.94"
+      },
+      {
+        "index": 3,
+        "title": "Amazon.com Inc",
+        "quote": "AMZN",
+        "price_change": "-$2.11",
+        "percent_price_change": "-1.16"
+      },
+      {
+        "index": 4,
+        "title": "Regeneron Pharmaceuticals Inc",
+        "quote": "REGN",
+        "price_change": "-$7.20",
+        "percent_price_change": "-0.80"
+      },
+      {
+        "index": 5,
+        "title": "Plug Power Inc",
+        "quote": "PLUG",
+        "price_change": "-$0.020",
+        "percent_price_change": "-0.73"
+      },
+      {
+        "index": 6,
+        "title": "Apple Inc",
+        "quote": "AAPL",
+        "price_change": "-$0.96",
+        "percent_price_change": "-0.57"
+      }
+    ],
+    "bottom_position": [
+      {
+        "position": 1,
+        "ticker": "Index",
+        "ticker_link": "https://www.google.com/finance/quote/.DJI:INDEXDJX",
+        "title": "Dow Jones Industrial Average",
+        "price": "37,775.38",
+        "percent_price_change": "+0.058"
+      },
+      {
+        "position": 2,
+        "ticker": "Index",
+        "ticker_link": "https://www.google.com/finance/quote/.INX:INDEXSP",
+        "title": "S&P 500",
+        "price": "5,011.12",
+        "percent_price_change": "-0.22"
+      },
+      {
+        "position": 3,
+        "ticker": "TSLA",
+        "ticker_link": "https://www.google.com/finance/quote/TSLA:NASDAQ",
+        "title": "Tesla Inc",
+        "price": "$149.93",
+        "percent_price_change": "-3.55"
+      },
+      {
+        "position": 4,
+        "ticker": "AAPL",
+        "ticker_link": "https://www.google.com/finance/quote/AAPL:NASDAQ",
+        "title": "Apple Inc",
+        "price": "$167.04",
+        "percent_price_change": "-0.57"
+      },
+      {
+        "position": 5,
+        "ticker": "AMZN",
+        "ticker_link": "https://www.google.com/finance/quote/AMZN:NASDAQ",
+        "title": "Amazon.com Inc",
+        "price": "$179.17",
+        "percent_price_change": "-1.16"
+      },
+      {
+        "position": 6,
+        "ticker": "BABA",
+        "ticker_link": "https://www.google.com/finance/quote/BABA:NYSE",
+        "title": "Alibaba Group Holding Ltd - ADR",
+        "price": "$68.88",
+        "percent_price_change": "+0.087"
+      },
+      {
+        "position": 7,
+        "ticker": "PLUG",
+        "ticker_link": "https://www.google.com/finance/quote/PLUG:NASDAQ",
+        "title": "Plug Power Inc",
+        "price": "$2.71",
+        "percent_price_change": "-0.73"
+      },
+      {
+        "position": 8,
+        "ticker": "REGN",
+        "ticker_link": "https://www.google.com/finance/quote/REGN:NASDAQ",
+        "title": "Regeneron Pharmaceuticals Inc",
+        "price": "$893.99",
+        "percent_price_change": "-0.80"
+      },
+      {
+        "position": 9,
+        "ticker": "F",
+        "ticker_link": "https://www.google.com/finance/quote/F:NYSE",
+        "title": "Ford Motor Co",
+        "price": "$12.06",
+        "percent_price_change": "+0.17"
+      },
+      {
+        "position": 10,
+        "ticker": "NXST",
+        "ticker_link": "https://www.google.com/finance/quote/NXST:NASDAQ",
+        "title": "Nexstar Media Group Inc",
+        "price": "$161.96",
+        "percent_price_change": "+1.94"
+      },
+      {
+        "position": 11,
+        "ticker": "Index",
+        "ticker_link": "https://www.google.com/finance/quote/VIX:INDEXCBOE",
+        "title": "VIX",
+        "price": "20.51",
+        "percent_price_change": "+12.63"
+      },
+      {
+        "position": 12,
+        "ticker": "MSFT",
+        "ticker_link": "https://www.google.com/finance/quote/MSFT:NASDAQ",
+        "title": "Microsoft Corp",
+        "price": "$404.27",
+        "percent_price_change": "-1.84"
+      },
+      {
+        "position": 13,
+        "ticker": "GE",
+        "ticker_link": "https://www.google.com/finance/quote/GE:NYSE",
+        "title": "General Electric Co",
+        "price": "$152.94",
+        "percent_price_change": "-1.75"
+      },
+      {
+        "position": 14,
+        "ticker": "Index",
+        "ticker_link": "https://www.google.com/finance/quote/.IXIC:INDEXNASDAQ",
+        "title": "Nasdaq Composite",
+        "price": "15,601.50",
+        "percent_price_change": "-0.52"
+      },
+      {
+        "position": 15,
+        "ticker": "SPY",
+        "ticker_link": "https://www.google.com/finance/quote/SPY:NYSEARCA",
+        "title": "SPDR S&P 500 ETF Trust",
+        "price": "$499.52",
+        "percent_price_change": "-0.21"
+      },
+      {
+        "position": 16,
+        "ticker": "DIS",
+        "ticker_link": "https://www.google.com/finance/quote/DIS:NYSE",
+        "title": "Walt Disney Co",
+        "price": "$112.43",
+        "percent_price_change": "-0.42"
+      },
+      {
+        "position": 17,
+        "ticker": "NFLX",
+        "ticker_link": "https://www.google.com/finance/quote/NFLX:NASDAQ",
+        "title": "Netflix Inc",
+        "price": "$611.15",
+        "percent_price_change": "-0.41"
+      },
+      {
+        "position": 18,
+        "ticker": "PFE",
+        "ticker_link": "https://www.google.com/finance/quote/PFE:NYSE",
+        "title": "Pfizer Inc",
+        "price": "$25.39",
+        "percent_price_change": "-0.12"
+      }
+    ]
+  },
+  "earning_calendar": [],
+  "most_followed_on_google": [
+    {
+      "title": "Apple Inc",
+      "quote": "AAPL",
+      "following": "3.71",
+      "percent_price_change": "-0.57"
+    },
+    {
+      "title": "Alphabet Inc Class A",
+      "quote": "GOOGL",
+      "following": "2.16",
+      "percent_price_change": "+0.35"
+    },
+    {
+      "title": "Microsoft Corp",
+      "quote": "MSFT",
+      "following": "1.84",
+      "percent_price_change": "-1.84"
+    },
+    {
+      "title": "Amazon.com Inc",
+      "quote": "AMZN",
+      "following": "1.74",
+      "percent_price_change": "-1.16"
+    },
+    {
+      "title": "Meta Platforms Inc",
+      "quote": "META",
+      "following": "1.58",
+      "percent_price_change": "+1.54"
+    },
+    {
+      "title": "Tesla Inc",
+      "quote": "TSLA",
+      "following": "1.49",
+      "percent_price_change": "-3.55"
+    }
+  ],
+  "news": []
+}
