@@ -2,7 +2,17 @@ import yfinance as yf
 import pandas as pd
 import json
 
-list_companies = ["MSFT", "AAPL", "TSLA", "GOOGL", "AMZN", "FB", "NFLX", "GOOG", "NVDA", "PYPL"]
+# Read the first 30 lines from the CSV file
+file_path = "scrapers/yahoo_finance/bats_symbols.csv"
+list_companies = []
+
+with open(file_path, "r") as f:
+    for i, line in enumerate(f):
+        if i >= 30:
+            break
+        company = line.split(",")[0]
+        list_companies.append(company)
+
 companyDict = {}
 
 # Go through listed companies
