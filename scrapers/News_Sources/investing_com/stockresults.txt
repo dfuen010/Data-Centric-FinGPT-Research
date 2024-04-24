@@ -1,0 +1,552 @@
+{
+    "NASDAQ": [
+        {
+            "date": "2024-03-25T00:00:00.000Z",
+            "value": 18215.54,
+            "price_open": 18215.54,
+            "price_high": 18336.97,
+            "price_low": 18189.68,
+            "price_close": 18277.06
+        },
+        {
+            "date": "2024-03-26T00:00:00.000Z",
+            "value": 18348.45,
+            "price_open": 18348.45,
+            "price_high": 18378.7,
+            "price_low": 18209.42,
+            "price_close": 18210.54
+        },
+        {
+            "date": "2024-03-27T00:00:00.000Z",
+            "value": 18323.67,
+            "price_open": 18323.67,
+            "price_high": 18324.76,
+            "price_low": 18168.48,
+            "price_close": 18280.84
+        },
+        {
+            "date": "2024-03-28T00:00:00.000Z",
+            "value": 18263.41,
+            "price_open": 18263.41,
+            "price_high": 18308.15,
+            "price_low": 18231.38,
+            "price_close": 18254.69
+        },
+        {
+            "date": "2024-04-01T00:00:00.000Z",
+            "value": 18281.37,
+            "price_open": 18281.37,
+            "price_high": 18390.98,
+            "price_low": 18211.35,
+            "price_close": 18293.2
+        },
+        {
+            "date": "2024-04-02T00:00:00.000Z",
+            "value": 18077.26,
+            "price_open": 18077.26,
+            "price_high": 18135.26,
+            "price_low": 18003.01,
+            "price_close": 18121.78
+        },
+        {
+            "date": "2024-04-03T00:00:00.000Z",
+            "value": 18053.17,
+            "price_open": 18053.17,
+            "price_high": 18238.66,
+            "price_low": 18045.8,
+            "price_close": 18160.19
+        },
+        {
+            "date": "2024-04-04T00:00:00.000Z",
+            "value": 18331.11,
+            "price_open": 18331.11,
+            "price_high": 18362.29,
+            "price_low": 17878.11,
+            "price_close": 17878.78
+        },
+        {
+            "date": "2024-04-05T00:00:00.000Z",
+            "value": 17938.99,
+            "price_open": 17938.99,
+            "price_high": 18202.81,
+            "price_low": 17913.81,
+            "price_close": 18108.46
+        },
+        {
+            "date": "2024-04-08T00:00:00.000Z",
+            "value": 18130.44,
+            "price_open": 18130.44,
+            "price_high": 18178.56,
+            "price_low": 18050.69,
+            "price_close": 18100.19
+        },
+        {
+            "date": "2024-04-09T00:00:00.000Z",
+            "value": 18187.68,
+            "price_open": 18187.68,
+            "price_high": 18209.67,
+            "price_low": 17973.19,
+            "price_close": 18169.9
+        },
+        {
+            "date": "2024-04-10T00:00:00.000Z",
+            "value": 17958.91,
+            "price_open": 17958.91,
+            "price_high": 18040.83,
+            "price_low": 17932.51,
+            "price_close": 18011.65
+        },
+        {
+            "date": "2024-04-11T00:00:00.000Z",
+            "value": 18087.41,
+            "price_open": 18087.41,
+            "price_high": 18337.15,
+            "price_low": 17998.56,
+            "price_close": 18307.98
+        },
+        {
+            "date": "2024-04-12T00:00:00.000Z",
+            "value": 18119.86,
+            "price_open": 18119.86,
+            "price_high": 18166.49,
+            "price_low": 17952.26,
+            "price_close": 18003.49
+        },
+        {
+            "date": "2024-04-15T00:00:00.000Z",
+            "value": 18143.26,
+            "price_open": 18143.26,
+            "price_high": 18151.44,
+            "price_low": 17676.65,
+            "price_close": 17706.83
+        },
+        {
+            "date": "2024-04-16T00:00:00.000Z",
+            "value": 17698.77,
+            "price_open": 17698.77,
+            "price_high": 17817.73,
+            "price_low": 17661.38,
+            "price_close": 17713.66
+        },
+        {
+            "date": "2024-04-17T00:00:00.000Z",
+            "value": 17785.79,
+            "price_open": 17785.79,
+            "price_high": 17787.72,
+            "price_low": 17459.96,
+            "price_close": 17493.62
+        },
+        {
+            "date": "2024-04-18T00:00:00.000Z",
+            "value": 17514.77,
+            "price_open": 17514.77,
+            "price_high": 17590.68,
+            "price_low": 17377.53,
+            "price_close": 17394.31
+        },
+        {
+            "date": "2024-04-19T00:00:00.000Z",
+            "value": 17337.51,
+            "price_open": 17337.51,
+            "price_high": 17361.56,
+            "price_low": 16975.06,
+            "price_close": 17037.65
+        },
+        {
+            "date": "2024-04-22T00:00:00.000Z",
+            "value": 17158.55,
+            "price_open": 17158.55,
+            "price_high": 17304.97,
+            "price_low": 17010.62,
+            "price_close": 17210.89
+        },
+        {
+            "date": "2024-04-23T00:00:00.000Z",
+            "value": 17298.26,
+            "price_open": 17298.26,
+            "price_high": 17513.27,
+            "price_low": 17277.95,
+            "price_close": 17471.47
+        }
+    ],
+    "usTech100": [
+        {
+            "date": "2024-03-25T00:00:00.000Z",
+            "value": 18350.1,
+            "price_open": 18350.1,
+            "price_high": 18364.2,
+            "price_low": 18180.9,
+            "price_close": 18309.5
+        },
+        {
+            "date": "2024-03-26T00:00:00.000Z",
+            "value": 18309.9,
+            "price_open": 18309.9,
+            "price_high": 18387.2,
+            "price_low": 18212.1,
+            "price_close": 18268.5
+        },
+        {
+            "date": "2024-03-27T00:00:00.000Z",
+            "value": 18267.3,
+            "price_open": 18267.3,
+            "price_high": 18352,
+            "price_low": 18157.8,
+            "price_close": 18257.5
+        },
+        {
+            "date": "2024-03-28T00:00:00.000Z",
+            "value": 18257.8,
+            "price_open": 18257.8,
+            "price_high": 18311.2,
+            "price_low": 18226,
+            "price_close": 18244.2
+        },
+        {
+            "date": "2024-03-31T00:00:00.000Z",
+            "value": 18290.5,
+            "price_open": 18290.5,
+            "price_high": 18392.6,
+            "price_low": 18287.5,
+            "price_close": 18389.8
+        },
+        {
+            "date": "2024-04-01T00:00:00.000Z",
+            "value": 18390.1,
+            "price_open": 18390.1,
+            "price_high": 18391.1,
+            "price_low": 18206.1,
+            "price_close": 18258.6
+        },
+        {
+            "date": "2024-04-02T00:00:00.000Z",
+            "value": 18258.8,
+            "price_open": 18258.8,
+            "price_high": 18304.8,
+            "price_low": 17997.6,
+            "price_close": 18119.4
+        },
+        {
+            "date": "2024-04-03T00:00:00.000Z",
+            "value": 18118.7,
+            "price_open": 18118.7,
+            "price_high": 18279.3,
+            "price_low": 18028.2,
+            "price_close": 18244.8
+        },
+        {
+            "date": "2024-04-04T00:00:00.000Z",
+            "value": 18245.1,
+            "price_open": 18245.1,
+            "price_high": 18367.4,
+            "price_low": 17864.9,
+            "price_close": 17900.1
+        },
+        {
+            "date": "2024-04-05T00:00:00.000Z",
+            "value": 17899.5,
+            "price_open": 17899.5,
+            "price_high": 18208.5,
+            "price_low": 17864.2,
+            "price_close": 18114.5
+        },
+        {
+            "date": "2024-04-07T00:00:00.000Z",
+            "value": 18151.4,
+            "price_open": 18151.4,
+            "price_high": 18173.7,
+            "price_low": 18109.4,
+            "price_close": 18122.2
+        },
+        {
+            "date": "2024-04-08T00:00:00.000Z",
+            "value": 18123.5,
+            "price_open": 18123.5,
+            "price_high": 18182,
+            "price_low": 18043.9,
+            "price_close": 18108.8
+        },
+        {
+            "date": "2024-04-09T00:00:00.000Z",
+            "value": 18108.7,
+            "price_open": 18108.7,
+            "price_high": 18212.6,
+            "price_low": 17971.7,
+            "price_close": 18177
+        },
+        {
+            "date": "2024-04-10T00:00:00.000Z",
+            "value": 18176.9,
+            "price_open": 18176.9,
+            "price_high": 18250.3,
+            "price_low": 17867.6,
+            "price_close": 17981.1
+        },
+        {
+            "date": "2024-04-11T00:00:00.000Z",
+            "value": 17982.8,
+            "price_open": 17982.8,
+            "price_high": 18337.6,
+            "price_low": 17930.7,
+            "price_close": 18311.2
+        },
+        {
+            "date": "2024-04-12T00:00:00.000Z",
+            "value": 18310.7,
+            "price_open": 18310.7,
+            "price_high": 18330.9,
+            "price_low": 17951.4,
+            "price_close": 17999.6
+        },
+        {
+            "date": "2024-04-14T00:00:00.000Z",
+            "value": 17981.5,
+            "price_open": 17981.5,
+            "price_high": 18082.6,
+            "price_low": 17981.5,
+            "price_close": 18066.1
+        },
+        {
+            "date": "2024-04-15T00:00:00.000Z",
+            "value": 18066.5,
+            "price_open": 18066.5,
+            "price_high": 18178.5,
+            "price_low": 17677.6,
+            "price_close": 17703.8
+        },
+        {
+            "date": "2024-04-16T00:00:00.000Z",
+            "value": 17705.9,
+            "price_open": 17705.9,
+            "price_high": 17820.1,
+            "price_low": 17629.4,
+            "price_close": 17772.1
+        },
+        {
+            "date": "2024-04-17T00:00:00.000Z",
+            "value": 17771.5,
+            "price_open": 17771.5,
+            "price_high": 17804.6,
+            "price_low": 17459,
+            "price_close": 17531.4
+        },
+        {
+            "date": "2024-04-18T00:00:00.000Z",
+            "value": 17533.1,
+            "price_open": 17533.1,
+            "price_high": 17617.6,
+            "price_low": 17330.9,
+            "price_close": 17341
+        },
+        {
+            "date": "2024-04-19T00:00:00.000Z",
+            "value": 17343.7,
+            "price_open": 17343.7,
+            "price_high": 17403.2,
+            "price_low": 16972.2,
+            "price_close": 17033.5
+        },
+        {
+            "date": "2024-04-21T00:00:00.000Z",
+            "value": 17088.8,
+            "price_open": 17088.8,
+            "price_high": 17128.4,
+            "price_low": 17053,
+            "price_close": 17126.9
+        },
+        {
+            "date": "2024-04-22T00:00:00.000Z",
+            "value": 17126.6,
+            "price_open": 17126.6,
+            "price_high": 17304.5,
+            "price_low": 17007,
+            "price_close": 17182.6
+        },
+        {
+            "date": "2024-04-23T00:00:00.000Z",
+            "value": 17183.1,
+            "price_open": 17183.1,
+            "price_high": 17576.6,
+            "price_low": 17152.6,
+            "price_close": 17560.2
+        },
+        {
+            "date": "2024-04-24T00:00:00.000Z",
+            "value": 17559.8,
+            "price_open": 17559.8,
+            "price_high": 17605.4,
+            "price_low": 17547.6,
+            "price_close": 17594.1
+        }
+    ],
+    "SP500": [
+        {
+            "date": "2024-03-25T00:00:00.000Z",
+            "value": 5219.5,
+            "price_open": 5219.5,
+            "price_high": 5229.1,
+            "price_low": 5216.1,
+            "price_close": 5218.2
+        },
+        {
+            "date": "2024-03-26T00:00:00.000Z",
+            "value": 5228.9,
+            "price_open": 5228.9,
+            "price_high": 5235.2,
+            "price_low": 5203.4,
+            "price_close": 5203.6
+        },
+        {
+            "date": "2024-03-27T00:00:00.000Z",
+            "value": 5226.3,
+            "price_open": 5226.3,
+            "price_high": 5249.3,
+            "price_low": 5213.9,
+            "price_close": 5248.5
+        },
+        {
+            "date": "2024-03-28T00:00:00.000Z",
+            "value": 5248,
+            "price_open": 5248,
+            "price_high": 5264.9,
+            "price_low": 5245.8,
+            "price_close": 5254.4
+        },
+        {
+            "date": "2024-04-01T00:00:00.000Z",
+            "value": 5258,
+            "price_open": 5258,
+            "price_high": 5263.9,
+            "price_low": 5229.2,
+            "price_close": 5243.8
+        },
+        {
+            "date": "2024-04-02T00:00:00.000Z",
+            "value": 5204.3,
+            "price_open": 5204.3,
+            "price_high": 5208.3,
+            "price_low": 5184.1,
+            "price_close": 5205.8
+        },
+        {
+            "date": "2024-04-03T00:00:00.000Z",
+            "value": 5194.4,
+            "price_open": 5194.4,
+            "price_high": 5228.8,
+            "price_low": 5194.4,
+            "price_close": 5211.5
+        },
+        {
+            "date": "2024-04-04T00:00:00.000Z",
+            "value": 5244.1,
+            "price_open": 5244.1,
+            "price_high": 5256.6,
+            "price_low": 5146.1,
+            "price_close": 5147.2
+        },
+        {
+            "date": "2024-04-05T00:00:00.000Z",
+            "value": 5158.9,
+            "price_open": 5158.9,
+            "price_high": 5222.2,
+            "price_low": 5157.2,
+            "price_close": 5204.3
+        },
+        {
+            "date": "2024-04-08T00:00:00.000Z",
+            "value": 5211.4,
+            "price_open": 5211.4,
+            "price_high": 5219.6,
+            "price_low": 5197.4,
+            "price_close": 5202.4
+        },
+        {
+            "date": "2024-04-09T00:00:00.000Z",
+            "value": 5217,
+            "price_open": 5217,
+            "price_high": 5224.8,
+            "price_low": 5160.8,
+            "price_close": 5209.9
+        },
+        {
+            "date": "2024-04-10T00:00:00.000Z",
+            "value": 5167.9,
+            "price_open": 5167.9,
+            "price_high": 5178.4,
+            "price_low": 5138.7,
+            "price_close": 5160.6
+        },
+        {
+            "date": "2024-04-11T00:00:00.000Z",
+            "value": 5172.9,
+            "price_open": 5172.9,
+            "price_high": 5211.8,
+            "price_low": 5138.8,
+            "price_close": 5199.1
+        },
+        {
+            "date": "2024-04-12T00:00:00.000Z",
+            "value": 5171.5,
+            "price_open": 5171.5,
+            "price_high": 5175,
+            "price_low": 5107.9,
+            "price_close": 5123.4
+        },
+        {
+            "date": "2024-04-15T00:00:00.000Z",
+            "value": 5149.67,
+            "price_open": 5149.67,
+            "price_high": 5168.43,
+            "price_low": 5052.47,
+            "price_close": 5061.82
+        },
+        {
+            "date": "2024-04-16T00:00:00.000Z",
+            "value": 5064.59,
+            "price_open": 5064.59,
+            "price_high": 5079.84,
+            "price_low": 5039.83,
+            "price_close": 5051.41
+        },
+        {
+            "date": "2024-04-17T00:00:00.000Z",
+            "value": 5068.97,
+            "price_open": 5068.97,
+            "price_high": 5077.96,
+            "price_low": 5007.25,
+            "price_close": 5022.21
+        },
+        {
+            "date": "2024-04-18T00:00:00.000Z",
+            "value": 5031.52,
+            "price_open": 5031.52,
+            "price_high": 5056.66,
+            "price_low": 5001.89,
+            "price_close": 5011.12
+        },
+        {
+            "date": "2024-04-19T00:00:00.000Z",
+            "value": 5005.44,
+            "price_open": 5005.44,
+            "price_high": 5019.02,
+            "price_low": 4953.56,
+            "price_close": 4967.23
+        },
+        {
+            "date": "2024-04-22T00:00:00.000Z",
+            "value": 4987.33,
+            "price_open": 4987.33,
+            "price_high": 5038.84,
+            "price_low": 4969.4,
+            "price_close": 5010.6
+        },
+        {
+            "date": "2024-04-23T00:00:00.000Z",
+            "value": 5028.85,
+            "price_open": 5028.85,
+            "price_high": 5076.12,
+            "price_low": 5027.96,
+            "price_close": 5070.55
+        }
+    ]
+}
