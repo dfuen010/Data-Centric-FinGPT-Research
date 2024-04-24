@@ -370,5 +370,183 @@
             "price_low": 1.2449,
             "price_close": 1.2456
         }
+    ],
+    "usDollarFutures": [
+        {
+            "date": 1711324800000,
+            "value": 104.165,
+            "price_open": 104.165,
+            "price_high": 104.19,
+            "price_low": 103.84,
+            "price_close": 103.934
+        },
+        {
+            "date": 1711411200000,
+            "value": 103.925,
+            "price_open": 103.925,
+            "price_high": 104.03,
+            "price_low": 103.71,
+            "price_close": 103.991
+        },
+        {
+            "date": 1711497600000,
+            "value": 104.005,
+            "price_open": 104.005,
+            "price_high": 104.165,
+            "price_low": 103.92,
+            "price_close": 104.064
+        },
+        {
+            "date": 1711584000000,
+            "value": 104.135,
+            "price_open": 104.135,
+            "price_high": 104.45,
+            "price_low": 104.03,
+            "price_close": 104.269
+        },
+        {
+            "date": 1711929600000,
+            "value": 104.25,
+            "price_open": 104.25,
+            "price_high": 104.805,
+            "price_low": 104.135,
+            "price_close": 104.764
+        },
+        {
+            "date": 1712016000000,
+            "value": 104.735,
+            "price_open": 104.735,
+            "price_high": 104.84,
+            "price_low": 104.42,
+            "price_close": 104.562
+        },
+        {
+            "date": 1712102400000,
+            "value": 104.53,
+            "price_open": 104.53,
+            "price_high": 104.59,
+            "price_low": 103.97,
+            "price_close": 103.997
+        },
+        {
+            "date": 1712188800000,
+            "value": 103.98,
+            "price_open": 103.98,
+            "price_high": 104.03,
+            "price_low": 103.68,
+            "price_close": 103.891
+        },
+        {
+            "date": 1712275200000,
+            "value": 104.005,
+            "price_open": 104.005,
+            "price_high": 104.46,
+            "price_low": 103.91,
+            "price_close": 104.071
+        },
+        {
+            "date": 1712534400000,
+            "value": 104.06,
+            "price_open": 104.06,
+            "price_high": 104.21,
+            "price_low": 103.86,
+            "price_close": 103.902
+        },
+        {
+            "date": 1712620800000,
+            "value": 103.87,
+            "price_open": 103.87,
+            "price_high": 103.975,
+            "price_low": 103.645,
+            "price_close": 103.922
+        },
+        {
+            "date": 1712707200000,
+            "value": 103.89,
+            "price_open": 103.89,
+            "price_high": 105.085,
+            "price_low": 103.795,
+            "price_close": 105.031
+        },
+        {
+            "date": 1712793600000,
+            "value": 105.01,
+            "price_open": 105.01,
+            "price_high": 105.31,
+            "price_low": 104.82,
+            "price_close": 105.064
+        },
+        {
+            "date": 1712880000000,
+            "value": 105.07,
+            "price_open": 105.07,
+            "price_high": 105.9,
+            "price_low": 105.025,
+            "price_close": 105.832
+        },
+        {
+            "date": 1713139200000,
+            "value": 105.83,
+            "price_open": 105.83,
+            "price_high": 106.045,
+            "price_low": 105.64,
+            "price_close": 105.998
+        },
+        {
+            "date": 1713225600000,
+            "value": 105.99,
+            "price_open": 105.99,
+            "price_high": 106.325,
+            "price_low": 105.87,
+            "price_close": 106.065
+        },
+        {
+            "date": 1713312000000,
+            "value": 106.16,
+            "price_open": 106.16,
+            "price_high": 106.255,
+            "price_low": 105.685,
+            "price_close": 105.764
+        },
+        {
+            "date": 1713398400000,
+            "value": 105.79,
+            "price_open": 105.79,
+            "price_high": 106.01,
+            "price_low": 105.57,
+            "price_close": 105.982
+        },
+        {
+            "date": 1713484800000,
+            "value": 106,
+            "price_open": 106,
+            "price_high": 106.185,
+            "price_low": 105.67,
+            "price_close": 105.984
+        },
+        {
+            "date": 1713744000000,
+            "value": 105.885,
+            "price_open": 105.885,
+            "price_high": 106.235,
+            "price_low": 105.825,
+            "price_close": 105.913
+        },
+        {
+            "date": 1713830400000,
+            "value": 105.96,
+            "price_open": 105.96,
+            "price_high": 106.075,
+            "price_low": 105.445,
+            "price_close": 105.505
+        },
+        {
+            "date": 1713916800000,
+            "value": 105.52,
+            "price_open": 105.52,
+            "price_high": 105.55,
+            "price_low": 105.43,
+            "price_close": 105.515
+        }
     ]
 }
