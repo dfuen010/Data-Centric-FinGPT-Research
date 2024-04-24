@@ -1,7 +1,7 @@
 import yfinance as yf
 import json
 
-file_path = "scrapers/yahoo_finance/top100.txt"
+file_path = "scrapers/yahoo_finance/top50.txt"
 
 listCompanies = []
 
@@ -14,16 +14,16 @@ with open(file_path, "r") as f:
         company = line.strip()
         listCompanies.append(company)
 
-# for all company tickers
-companyDict = {}
-x = listCompanies[0]
-tick = yf.Ticker(x)
-print(tick.balance_sheet)
-
-with open("datasets/news/yahoo_finance/top50financials"):
+with open("datasets/news/yahoo_finance/top50financials.txt", "w") as f:
     
     for company in listCompanies:
         
         ticker = yf.Ticker(company)
         incomeStatement = ticker.income_stmt
         balanceSheet = ticker.balance_sheet
+        if(balanceSheet.columns.empty):
+            continue
+        f.write(f"\n\n{company} Financials(Income Statement/Balance Sheet):\n\n")
+        f.write(f"Income Statement for {company}{incomeStatement}\n\n")
+        f.write(f"Balance Sheet for {company}{balanceSheet.to_string()}\n\n")
+        
