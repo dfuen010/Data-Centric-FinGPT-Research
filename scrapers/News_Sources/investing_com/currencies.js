@@ -12,10 +12,28 @@ async function main() {
     // id 8827 for USD Index Futures
     const usDollarFutures = await investing("8827");
 
+    // Convert Millisecond timestamp to regular date format
+    const convertTimestampToDate = (timestamp) => {
+      const date = new Date(timestamp);
+      // Format as ISO date string (e.g., "2024-04-11T00:00:00.000Z")
+      return date.toISOString(); 
+    };
+
+    // Convert timestamps in the API response to regular date format
+    currencyEUROtoUSD.forEach(entry => {
+      entry.date = convertTimestampToDate(entry.date);
+    });
+
+    currencyPOUNDtoUSD.forEach(entry => {
+      entry.date = convertTimestampToDate(entry.date);
+    });
+
+    usDollarFutures.forEach(entry => {
+      entry.date = convertTimestampToDate(entry.date);
+    })
+
     // Convert responses to JSON with indentation
     const jsonContent = JSON.stringify({ currencyEUROtoUSD, currencyPOUNDtoUSD, usDollarFutures }, null, 4);
-
-    
 
     // Write formatted JSON to a file
     await fs.writeFile('currency.txt', jsonContent);
