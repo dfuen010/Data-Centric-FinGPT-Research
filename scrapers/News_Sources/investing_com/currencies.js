@@ -1,11 +1,28 @@
 const { investing } = require('investing-com-api');
+// Import the fs module to write info into file.
+const fs = require('fs').promises; 
 
 async function main() {
   try {
-    const response1 = await investing('currencies/eur-usd'); // Providing a valid mapping.js key
-    const response2 = await investing('currencies/eur-usd', 'P1M', 'P1D'); // With optional params
-    const response3 = await investing('1'); // Providing the pairId directly, even if not present in mapping.js
+
+    // id 1 stands for euro us currency comparison
+    const currencyEUROtoUSD = await investing("1"); 
+    // id 2 stands for british pounnd us currency comparison
+    const currencyPOUNDtoUSD = await investing("2"); 
+
+    // Convert responses to JSON with indentation
+    const jsonContent = JSON.stringify({ currencyEUROtoUSD, currencyPOUNDtoUSD }, null, 4);
+
+    // Write formatted JSON to a file
+    await fs.writeFile('currency.txt', jsonContent);
+
+    console.log('Responses written to responses.txt file.');
+
   } catch (err) {
     console.error(err);
   }
+
 }
+
+
+main();
