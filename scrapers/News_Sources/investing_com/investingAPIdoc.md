@@ -1,6 +1,5 @@
 ## Documentation for Investing-com GitHub API
 
-
  ### **Installation**
 
         npm i investing-com-api
@@ -59,10 +58,14 @@
         The "script key" in this case can either be "curr", "stock", or "future"
 
         If you create more files don't forget to modify the package.json
+
+
+##### Please Note:
+The code in the investing_com folder doesn't have the required modules because it would be too many files in the repo. Only the js and resulting txt file are located on the repository. Therefore you must run the installation to get the required node_modules and packages to run the code in the investing-com folder.
+
     
 
-
-Here is the Investing-Com API Repository:
+##### Here is the Investing-Com API Repository:
 https://github.com/DavideViolante/investing-com-api
 
 
