@@ -219,8 +219,36 @@ def parse_marketscreener(results):
         marketscreener = pd.concat([marketscreener, indiv], axis=0)
     return marketscreener.reset_index(drop=True).replace("-", 0)
 
+def parse_finviz(results):
+    """
+    Parses data from FinViz HTML content.
+    Parameters:
+        results (list): List of HTML content from FinViz.
+    Returns:
+        pandas.DataFrame: DataFrame containing parsed data."""
+        
+    finviz = pd.DataFrame()
+    perf_columns = [
+        "Perf Week",
+        "Perf Month",
+        "Perf Quarter",
+        "Perf Half Y",
+        "Perf Year",
+        "Perf YTD",
+    ]
 
-
+    for html in results:
+        soup = BeautifulSoup(html, features="lxml")
+        table = soup.find_all("table", {"class": "snapshot-table2"})
+        try:
+            df = pd.read_html(str(table))[0].iloc[:, -2:].set_index(10)
+            df[11] = df[11].str.replace("%", "")
+            perf_values = df.loc[perf_columns].astype(float).T.reset_index(drop=True)
+            indiv = pd.DataFrame(perf_values, columns=perf_columns)
+        except:
+            indiv = pd.DataFrame([[0] * 6], columns=perf_columns)
+        finviz = pd.concat([finviz, indiv], axis=0, ignore_index=True)
+    return finviz
 
 if __name__ == "__main__":
     all_tickers = []
@@ -228,20 +256,28 @@ if __name__ == "__main__":
         all_tickers = json.load(file)
         
     random_20_tickers = random.sample(all_tickers, 20)
-
+    
+    # Yahoo Finance
     yahoo = get_yahoo_data(random_20_tickers)
     names = yahoo["Name"].tolist()
     
     links= {}
     
+    # MarketScreener
     links = asyncio.run(get_marketscreener_links(random_20_tickers, names, links))
     market_screener_urls = [links[x] for x in random_20_tickers if x in links]
     market_screener_htmls = asyncio.run(get_all_html(market_screener_urls))
     marketscreener = parse_marketscreener(market_screener_htmls)    
+    
+    # FinViz
     finviz_urls = ["https://finviz.com/quote.ashx?t=" + x for x in random_20_tickers]
     finviz_htmls = asyncio.run(get_all_html(finviz_urls))
+    finviz = parse_finviz(finviz_htmls)
     
+    final = pd.concat([yahoo, finviz, marketscreener], axis=1)
+    final = final.apply(pd.to_numeric, errors="ignore")
+    final = final.replace(np.nan, 0).fillna(0)
     
-    #final.to_csv("datasets/marketscreener_yf/finviz_yf_marketscreener.csv", index=False)
+    final.to_csv("datasets/marketscreener_yf/finviz_yf_marketscreener.csv", index=False)
     
     
