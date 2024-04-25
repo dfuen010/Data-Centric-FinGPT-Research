@@ -1,0 +1,1 @@
+### Documentation for Tip Ranks Github API
