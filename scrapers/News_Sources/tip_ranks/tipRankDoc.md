@@ -25,7 +25,7 @@
 
 
 ##### Please Note:
-The code in the tip_ranks folder doesn't have the required modules because it would be too many files in the repo. Only the js and resulting json file are located on the repository. Therefore you must run the installation to get the required node_modules and packages to run the code in the tip_ranks folder.
+The code in the tip_ranks folder doesn't have the required modules because it would be too many files in the repo. It also doesn't have the required package-lock or package.json. You can make those files by doing npm init. Only the js and resulting json file are located on the repository. Therefore you must run the installation to get the required node_modules and packages to run the code in the tip_ranks folder.
 
 
 ##### Here is the TipRanks API Repository:
