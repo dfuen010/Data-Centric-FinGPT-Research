@@ -140,7 +140,7 @@ async def get_marketscreener_links(tickers, names, links):
                 links[ticker] = "https://www.marketscreener.com" + link + "finances/"
                 break
 
-    with open("datasets/marketscreener_yf/mscreener_tickers.json", "w") as file:
+    with open("datasets/marketscreener_yf/mscreener_tickers2.json", "w") as file:
         json.dump(links, file)
         
     return links
@@ -256,7 +256,7 @@ if __name__ == "__main__":
     with open("scrapers/multiple_srcs/nasdaq_tickers.json", "r") as file:
         all_tickers = json.load(file)
     
-    random_size = 20
+    random_size = 60
     random_20_tickers = random.sample(all_tickers, random_size)
     
     # Yahoo Finance
@@ -280,6 +280,6 @@ if __name__ == "__main__":
     final = final.apply(pd.to_numeric, errors="ignore")
     final = final.replace(np.nan, 0).fillna(0)
     final.columns = col_names
-    final.to_csv(f"datasets/marketscreener_yf/{random_size}random_stockinfo.csv", index=False)
+    final.to_csv(f"datasets/marketscreener_yf/{random_size}random_stockinfo2.csv", index=False)
     
     
