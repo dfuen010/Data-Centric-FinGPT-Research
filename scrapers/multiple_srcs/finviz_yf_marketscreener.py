@@ -140,7 +140,7 @@ async def get_marketscreener_links(tickers, names, links):
                 links[ticker] = "https://www.marketscreener.com" + link + "finances/"
                 break
 
-    with open("datasets/marketscreener_yf/MarketScreener.json", "w") as file:
+    with open("datasets/marketscreener_yf/mscreener_tickers.json", "w") as file:
         json.dump(links, file)
         
     return links
@@ -241,7 +241,8 @@ def parse_finviz(results):
         soup = BeautifulSoup(html, features="lxml")
         table = soup.find_all("table", {"class": "snapshot-table2"})
         try:
-            df = pd.read_html(str(table))[0].iloc[:, -2:].set_index(10)
+            with StringIO(str(table)) as sio:
+                df = pd.read_html(sio)[0].iloc[:, -2:].set_index(10)
             df[11] = df[11].str.replace("%", "")
             perf_values = df.loc[perf_columns].astype(float).T.reset_index(drop=True)
             indiv = pd.DataFrame(perf_values, columns=perf_columns)
@@ -254,8 +255,9 @@ if __name__ == "__main__":
     all_tickers = []
     with open("scrapers/multiple_srcs/nasdaq_tickers.json", "r") as file:
         all_tickers = json.load(file)
-        
-    random_20_tickers = random.sample(all_tickers, 20)
+    
+    random_size = 20
+    random_20_tickers = random.sample(all_tickers, random_size)
     
     # Yahoo Finance
     yahoo = get_yahoo_data(random_20_tickers)
@@ -277,7 +279,7 @@ if __name__ == "__main__":
     final = pd.concat([yahoo, finviz, marketscreener], axis=1)
     final = final.apply(pd.to_numeric, errors="ignore")
     final = final.replace(np.nan, 0).fillna(0)
-    
-    final.to_csv("datasets/marketscreener_yf/finviz_yf_marketscreener.csv", index=False)
+    final.columns = col_names
+    final.to_csv(f"datasets/marketscreener_yf/{random_size}random_stockinfo.csv", index=False)
     
     
