@@ -1,38 +1,66 @@
-import FinNews as fn
+class FinNews:
+    def __init__(self):
+        pass
 
-cnbc_feed = fn.CNBC(topics=['finance', 'earnings'])
-print(cnbc_feed.get_news())
-print(cnbc_feed.possible_topics())
+    def get_cnbc_news(self, topics=None):
+        return CNBC(topics=topics).get_news()
 
-# Some feeds have support for feeds by ticker, tickers can be passed as a topic and are denoted by $XXX. These feeds will have 'ticker' as a possible topic.
-fn.SeekingAlpha(topics=['financial', '$AAPL'], save_feeds=True)
+    def get_seeking_alpha_news(self, topics=None, save_feeds=False):
+        return SeekingAlpha(topics=topics, save_feeds=save_feeds).get_news()
 
-# You can also pass in '*' to select all possible topic feeds.
-fn.WSJ(topics=['*'], save_feeds=True)
+    def get_wsj_news(self, topics=None, save_feeds=False):
+        return WSJ(topics=topics, save_feeds=save_feeds).get_news()
 
-# Selecting all topics will not add specific ticker feeds. You will have to add tickers manually.
-fn.Yahoo(topics=['*']).add_topics(['$DIS', '$GOOG'])
+    def get_yahoo_news(self, topics=None):
+        yahoo_feed = Yahoo(topics=topics)
+        yahoo_feed.add_topics(['$DIS', '$GOOG'])  # Example of adding tickers manually
+        return yahoo_feed.get_news()
 
-# There is also a Reddit class that allows you to get the rss feed of any subreddit. There are a few feeds established in the package but you can pass through any subreddit like you would a ticker. (r/news = $news)
-fn.Reddit(topics=['$finance', '$news'])
+    def get_reddit_news(self, topics=None):
+        return Reddit(topics=topics).get_news()
 
-# Each topic is converted into a Feed object. "save_feeds" is a boolean to determine if the previous entries in the feed should be saved or overwritten whenever get_news() is called.
-fn.Investing(topics=['*'], save_feeds=True)
+    def get_investing_news(self, topics=None, save_feeds=False):
+        return Investing(topics=topics, save_feeds=save_feeds).get_news()
 
-# Current RSS Feeds:
-FinNews.CNBC() # CNBC
-FinNews.SeekingAlpha() # Seeking Alpha*
-FinNews.Investing() # Investing.com
-FinNews.WSJ() # Wall Street Journal
-FinNews.Yahoo() # Yahoo Finance*
-FinNews.FT() # Finance Times
-FinNews.Fortune() # Fortune
-FinNews.MarketWatch() # MarketWatch
-FinNews.Zacks() # Zacks
-FinNews.Nasdaq() # Nasdaq*
-FinNews.Reddit() # Reddit
-FinNews.CNNMoney() # CNN Money
-FinNews.Reuters() # Reuters
+    @staticmethod
+    def get_supported_feeds():
+        supported_feeds = {
+            'CNBC': 'CNBC',
+            'SeekingAlpha': 'Seeking Alpha',
+            'WSJ': 'Wall Street Journal',
+            'Yahoo': 'Yahoo Finance',
+            'Reddit': 'Reddit',
+            'Investing': 'Investing.com',
+            # Add more supported feeds here
+        }
+        return supported_feeds
 
 
-# (* denotes ticker feed support)
+# Now, you can use the `FinNews` class to fetch news from different sources easily.
+fin_news = FinNews()
+
+# Fetch news from CNBC
+cnbc_feed = fin_news.get_cnbc_news(topics=['finance', 'earnings'])
+print(cnbc_feed)
+
+# Fetch news from Seeking Alpha
+seeking_alpha_feed = fin_news.get_seeking_alpha_news(topics=['financial', '$AAPL'], save_feeds=True)
+print(seeking_alpha_feed)
+
+# Fetch news from Yahoo Finance
+yahoo_feed = fin_news.get_yahoo_news(topics=['*'])
+print(yahoo_feed)
+
+# Fetch news from Reddit
+reddit_feed = fin_news.get_reddit_news(topics=['$finance', '$news'])
+print(reddit_feed)
+
+# Fetch news from Investing.com
+investing_feed = fin_news.get_investing_news(topics=['*'], save_feeds=True)
+print(investing_feed)
+
+# Get list of supported feeds
+supported_feeds = FinNews.get_supported_feeds()
+print("Supported Feeds:")
+for key, value in supported_feeds.items():
+    print(f"{key}: {value}")
