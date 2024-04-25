@@ -2,17 +2,49 @@ import http.client
 import urllib.parse
 import json
 
-def fetch_news():
+def fetch_news(sources=None):
     try:
         conn = http.client.HTTPSConnection('api.thenewsapi.com')
 
-        params = urllib.parse.urlencode({
+        params = {
             'api_token': 'nXUsig3871ipD8WkXDFY8prDewWMUG7xIiSkR2yp',
             'categories': 'business,tech',
             'limit': 50,
-        })
+        }
+        
+        if sources:
+            params['sources'] = ','.join(sources)
 
-        conn.request('GET', '/v1/news/all?{}'.format(params))
+        encoded_params = urllib.parse.urlencode(params)
+
+        conn.request('GET', f'/v1/news/all?{encoded_params}')
+
+        res = conn.getresponse()
+        if res.status != 200:
+            print(f"Failed to fetch news. HTTP Error {res.status}: {res.reason}")
+            return None
+
+        data = res.read()
+        return data.decode('utf-8')
+    except Exception as e:
+        print(f"An error occurred while fetching news: {e}")
+        return None
+
+def fetch_news_by_topic(topics=None):
+    try:
+        conn = http.client.HTTPSConnection('api.thenewsapi.com')
+
+        params = {
+            'api_token': 'nXUsig3871ipD8WkXDFY8prDewWMUG7xIiSkR2yp',
+            'limit': 50,
+        }
+        
+        if topics:
+            params['categories'] = ','.join(topics)
+
+        encoded_params = urllib.parse.urlencode(params)
+
+        conn.request('GET', f'/v1/news/all?{encoded_params}')
 
         res = conn.getresponse()
         if res.status != 200:
@@ -50,6 +82,15 @@ def parse_news(data):
 if __name__ == "__main__":
     print("Fetching news from The News API...")
     news_data = fetch_news()
+        # Fetch news from CNN and BBC
+    news_data = fetch_news(sources=['cnn', 'bbc-news'])
+
+    # Fetch news from CNN only
+    news_data = fetch_news(sources=['cnn'])
+    # Fetch news on business and technology
+    news_data = fetch_news_by_topic(topics=['business', 'tech'])
+
+
     if news_data:
         print("Parsing fetched news...")
         parse_news(news_data)
