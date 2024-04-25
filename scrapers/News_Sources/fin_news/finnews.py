@@ -1,21 +1,38 @@
-import requests
-#free api not accessible
-API_KEY = ""
-API_ENDPOINT = "https://api.newsfilter.io/search?token={}".format()
+import FinNews as fn
 
-# Define the news search parameters
-queryString = "symbols:NFLX AND publishedAt:[2020-02-01 TO 2020-05-20]"
+cnbc_feed = fn.CNBC(topics=['finance', 'earnings'])
+print(cnbc_feed.get_news())
+print(cnbc_feed.possible_topics())
 
-payload = {
-    "queryString": queryString,
-    "from": 0,
-    "size": 10
-}
+# Some feeds have support for feeds by ticker, tickers can be passed as a topic and are denoted by $XXX. These feeds will have 'ticker' as a possible topic.
+fn.SeekingAlpha(topics=['financial', '$AAPL'], save_feeds=True)
 
-# Send the search query to the Search API
-response = requests.post(API_ENDPOINT, json=payload)
+# You can also pass in '*' to select all possible topic feeds.
+fn.WSJ(topics=['*'], save_feeds=True)
 
-# Read the response
-articles = response.json()
+# Selecting all topics will not add specific ticker feeds. You will have to add tickers manually.
+fn.Yahoo(topics=['*']).add_topics(['$DIS', '$GOOG'])
 
-print(articles)
+# There is also a Reddit class that allows you to get the rss feed of any subreddit. There are a few feeds established in the package but you can pass through any subreddit like you would a ticker. (r/news = $news)
+fn.Reddit(topics=['$finance', '$news'])
+
+# Each topic is converted into a Feed object. "save_feeds" is a boolean to determine if the previous entries in the feed should be saved or overwritten whenever get_news() is called.
+fn.Investing(topics=['*'], save_feeds=True)
+
+# Current RSS Feeds:
+FinNews.CNBC() # CNBC
+FinNews.SeekingAlpha() # Seeking Alpha*
+FinNews.Investing() # Investing.com
+FinNews.WSJ() # Wall Street Journal
+FinNews.Yahoo() # Yahoo Finance*
+FinNews.FT() # Finance Times
+FinNews.Fortune() # Fortune
+FinNews.MarketWatch() # MarketWatch
+FinNews.Zacks() # Zacks
+FinNews.Nasdaq() # Nasdaq*
+FinNews.Reddit() # Reddit
+FinNews.CNNMoney() # CNN Money
+FinNews.Reuters() # Reuters
+
+
+# (* denotes ticker feed support)
