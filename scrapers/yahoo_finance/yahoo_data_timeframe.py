@@ -22,7 +22,7 @@ session = LimiterSession(
 session.headers['User-agent'] = 'my-program/1.0'
 
 # Define a list of stock symbols
-stock_symbols = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'FB', 'TSLA', 'NVDA', 'JPM', 'V', 'JNJ']
+stock_symbols = ['AAPL', 'MSFT', 'GOOGL']
 
 # Define start and end dates for the time frame
 start_date = '2022-01-01'
@@ -36,8 +36,11 @@ all_actions_data = pd.DataFrame()
 
 # Iterate over each stock symbol
 for symbol in stock_symbols:
+    # Use custom session with Ticker constructor
+    ticker = yf.Ticker(symbol, session=session)
+
     # Fetch actions data for the specified time frame
-    ticker_actions = yf.Ticker(symbol).actions
+    ticker_actions = ticker.actions
 
     # Filter actions data for the specified time frame
     ticker_actions_filtered = ticker_actions[(ticker_actions.index >= start_date) & (ticker_actions.index <= end_date)]
@@ -51,11 +54,3 @@ for symbol in stock_symbols:
 # Save the concatenated actions data to a single CSV file
 file_path = os.path.join(folder_path, 'all_companies_actions_data.csv')
 all_actions_data.to_csv(file_path, index=True)
-
-# Display additional information about each action taken by the companies
-for index, row in all_actions_data.iterrows():
-    print(f"Company: {row['Symbol']}")
-    print(f"Date: {index}")
-    print(f"Action: {row['Dividends'] if pd.notnull(row['Dividends']) else ''} "
-          f"{row['Stock Splits'] if pd.notnull(row['Stock Splits']) else ''}")
-    print()
