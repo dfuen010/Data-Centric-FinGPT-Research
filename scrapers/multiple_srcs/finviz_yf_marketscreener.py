@@ -10,6 +10,7 @@ import numpy as np
 from concurrent.futures import ThreadPoolExecutor
 import util
 import random
+from io import StringIO
 
 pd.options.mode.chained_assignment = None
 
@@ -139,10 +140,86 @@ async def get_marketscreener_links(tickers, names, links):
                 links[ticker] = "https://www.marketscreener.com" + link + "finances/"
                 break
 
-    with open("MarketScreener.json", "w") as file:
+    with open("datasets/marketscreener_yf/MarketScreener.json", "w") as file:
         json.dump(links, file)
         
     return links
+
+def parse_marketscreener(results):
+    """
+    Parse data from MarketScreener HTML content.
+    
+    Parameters:
+        results (list): List of HTML content from MarketScreener.
+        
+    Returns:
+        pandas.DataFrame: DataFrame containing parsed data."""
+    ### HELPER FUNCTIONS
+    def fix_names(x):
+        for num in ["1", "2", "3"]:
+            if num in x:
+                return x.replace(num, "")
+        return x
+
+    def process_df(df):
+        df = df.dropna(axis=1, how="all")
+        df.iloc[:, 0] = df.iloc[:, 0].apply(fix_names)
+        df.set_index(df.columns[0], inplace=True)
+        df.index = df.index.str.strip()
+        return df
+
+    marketscreener = pd.DataFrame()
+    for html in results:
+        divs = BeautifulSoup(html, features="lxml").find_all(
+            "div", {"class": "card card--collapsible mb-15"}
+        )
+        for div in divs:
+            header_text = div.find("div", {"class": "card-header"}).text
+            if ("income statement" in header_text.lower()) and (
+                "annual" in header_text.lower()
+            ):
+                income_statement = div.find("table")
+                with StringIO(str(income_statement)) as sio:
+                    income_statement = pd.read_html(sio)[0]
+                currency = (
+                    div.find_all("sup")[0]
+                    .attrs["title"]
+                    .replace("\n", "")
+                    .strip()
+                    .split(" ")[0]
+                )
+                unit = (
+                    div.find_all("sup")[0]
+                    .attrs["title"]
+                    .replace("\n", "")
+                    .strip()
+                    .split(" ")[-1]
+                )
+                break
+        currency, unit = pd.Series(currency), pd.Series(unit)
+        income_statement = process_df(income_statement)
+        col_names_is = income_statement.columns.tolist()
+        applicable = [col for col in col_names_is if col in years]
+        remain = [col for col in years if col not in applicable]
+        metrics = []
+        filler = pd.Series([0] * len(remain), dtype="object")
+        metrics_names = ["Net sales", "Net income", "EBITDA", "EBIT"]
+        for metric in metrics_names:
+            metrics.append(
+                pd.Series(income_statement.loc[:, applicable].loc[metric])
+                .T.reset_index(drop=True)
+                .str.replace(" ", "")
+            )
+            metrics.append(filler)
+        indiv = pd.DataFrame(pd.concat(metrics)).T
+        indiv = pd.concat([indiv, currency, unit], axis=1)
+        indiv.columns = list(
+            range(len(indiv.columns.tolist()))
+        )  # Net sales, Net income, EBITDA, EBIT for X years, currency, unit
+        marketscreener = pd.concat([marketscreener, indiv], axis=0)
+    return marketscreener.reset_index(drop=True).replace("-", 0)
+
+
 
 
 if __name__ == "__main__":
@@ -159,5 +236,12 @@ if __name__ == "__main__":
     
     links = asyncio.run(get_marketscreener_links(random_20_tickers, names, links))
     market_screener_urls = [links[x] for x in random_20_tickers if x in links]
-    print(market_screener_urls)
+    market_screener_htmls = asyncio.run(get_all_html(market_screener_urls))
+    marketscreener = parse_marketscreener(market_screener_htmls)    
+    finviz_urls = ["https://finviz.com/quote.ashx?t=" + x for x in random_20_tickers]
+    finviz_htmls = asyncio.run(get_all_html(finviz_urls))
+    
+    
+    #final.to_csv("datasets/marketscreener_yf/finviz_yf_marketscreener.csv", index=False)
+    
     
