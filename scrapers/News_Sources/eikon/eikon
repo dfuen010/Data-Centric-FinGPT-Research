@@ -1,32 +1,54 @@
 import eikon
 
-def main():
-    # Set your AppID obtained from the Eikon Application ID Generator
-    eikon.set_app_key('')
-
+def retrieve_symbology():
     try:
         # Retrieve symbology
         symbology = eikon.get_symbology()
         print("Symbology:", symbology)
+    except Exception as e:
+        print("Error retrieving symbology:", e)
 
+def retrieve_news_headlines():
+    try:
         # Retrieve news headlines
         news_headlines = eikon.get_news_headlines()
         print("News Headlines:", news_headlines)
+    except Exception as e:
+        print("Error retrieving news headlines:", e)
 
+def retrieve_news_story():
+    try:
         # Retrieve news story
         news_story = eikon.get_news_story()
         print("News Story:", news_story)
+    except Exception as e:
+        print("Error retrieving news story:", e)
 
+def retrieve_time_series():
+    try:
         # Retrieve time series data
         time_series = eikon.get_timeseries()
         print("Time Series Data:", time_series)
+    except Exception as e:
+        print("Error retrieving time series data:", e)
 
+def retrieve_general_data():
+    try:
         # Retrieve general data
         data = eikon.get_data()
         print("General Data:", data)
-
     except Exception as e:
-        print("An error occurred:", e)
+        print("Error retrieving general data:", e)
+
+def main():
+    # Set your AppID obtained from the Eikon Application ID Generator
+    eikon.set_app_key('YOUR_APP_ID_HERE')
+
+    retrieve_symbology()
+    retrieve_news_headlines()
+    retrieve_news_story()
+    retrieve_time_series()
+    retrieve_general_data()
 
 if __name__ == "__main__":
     main()
